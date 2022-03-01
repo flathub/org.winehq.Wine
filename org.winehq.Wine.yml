@@ -132,8 +132,8 @@ modules:
   - name: libusb
     sources: &libusb-sources
       - type: archive
-        url: https://github.com//libusb/libusb/releases/download/v1.0.23/libusb-1.0.23.tar.bz2
-        sha256: db11c06e958a82dac52cf3c65cb4dd2c3f339c8a988665110e0d24d19312ad8d
+        url: https://github.com/libusb/libusb/releases/download/v1.0.25/libusb-1.0.25.tar.bz2
+        sha256: 8a28ef197a797ebac2702f095e81975e2b02b2eeff2774fa909c78a74ef50849
         x-checker-data:
           type: json
           url: https://api.github.com/repos/libusb/libusb/releases/latest
@@ -152,8 +152,8 @@ modules:
           - udevadm hwdb --update
         sources: &eudev-sources
           - type: archive
-            url: https://github.com/gentoo/eudev/archive/v3.2.9.tar.gz
-            sha256: 7d281276b480da3935d1acb239748c2c9db01a8043aad7e918ce57a223d8cd24
+            url: https://github.com/eudev-project/eudev/releases/download/v3.2.11/eudev-3.2.11.tar.gz
+            sha256: 19847cafec67897da855fde56f9dc7d92e21c50e450aa79068a7e704ed44558b
             x-checker-data:
               type: json
               url: https://api.github.com/repos/gentoo/eudev/releases/latest
@@ -182,8 +182,8 @@ modules:
       - -DGSTREAMER=ON
     sources: &FAudio-sources
       - type: archive
-        url: https://github.com/FNA-XNA/FAudio/archive/20.09/FAudio-20.09.tar.gz
-        sha256: 375d12ba57f507b95e030926fd08308029b38af883d0524583a2d5d8fe65168b
+        url: https://github.com/FNA-XNA/FAudio/archive/22.03/FAudio-22.03.tar.gz
+        sha256: 91ea309417f6846fc097e06a0b4fb604bf4bdff67455fabc4820cf1dbe0e301e
         x-checker-data:
           type: json
           url: https://api.github.com/repos/FNA-XNA/FAudio/releases/latest
@@ -283,8 +283,8 @@ modules:
     sources:
       - type: git
         url: https://github.com/Winetricks/winetricks.git
-        tag: '20200412'
-        commit: f23083c2f1c2884c939e183dcee190ec319f6f79
+        tag: '20210825'
+        commit: fa11b11a91a984666bf83b42e09be33ec0d6b294
         x-checker-data:
           type: json
           url: https://api.github.com/repos/Winetricks/winetricks/releases
