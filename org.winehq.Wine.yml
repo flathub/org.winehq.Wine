@@ -134,6 +134,13 @@ modules:
       - type: archive
         url: https://github.com//libusb/libusb/releases/download/v1.0.23/libusb-1.0.23.tar.bz2
         sha256: db11c06e958a82dac52cf3c65cb4dd2c3f339c8a988665110e0d24d19312ad8d
+        x-checker-data:
+          type: json
+          url: https://api.github.com/repos/libusb/libusb/releases/latest
+          tag-query: .tag_name
+          version-query: $tag | sub("^[vV]"; "")
+          timestamp-query: .published_at
+          url-query: .assets[] | select(.name=="libusb-\($version).tar.bz2") | .browser_download_url
     modules:
 
       - name: eudev
@@ -147,6 +154,13 @@ modules:
           - type: archive
             url: https://github.com/gentoo/eudev/archive/v3.2.9.tar.gz
             sha256: 7d281276b480da3935d1acb239748c2c9db01a8043aad7e918ce57a223d8cd24
+            x-checker-data:
+              type: json
+              url: https://api.github.com/repos/gentoo/eudev/releases/latest
+              tag-query: .tag_name
+              version-query: $tag | sub("^[vV]"; "")
+              timestamp-query: .published_at
+              url-query: .assets[] | select(.name=="eudev-\($version).tar.gz") | .browser_download_url
 
   - name: libusb-32bit
     build-options:
@@ -168,8 +182,16 @@ modules:
       - -DGSTREAMER=ON
     sources: &FAudio-sources
       - type: archive
-        url: https://github.com/FNA-XNA/FAudio/archive/20.09.tar.gz
+        url: https://github.com/FNA-XNA/FAudio/archive/20.09/FAudio-20.09.tar.gz
         sha256: 375d12ba57f507b95e030926fd08308029b38af883d0524583a2d5d8fe65168b
+        x-checker-data:
+          type: json
+          url: https://api.github.com/repos/FNA-XNA/FAudio/releases/latest
+          tag-query: .tag_name
+          version-query: $tag | sub("^[vV]"; "")
+          timestamp-query: .published_at
+          url-query: >-
+            "https://github.com/FNA-XNA/FAudio/archive/\($version)/FAudio-\($version).tar.gz"
 
   - name: FAudio-32bit
     build-options:
@@ -262,6 +284,17 @@ modules:
       - type: git
         url: https://github.com/Winetricks/winetricks.git
         tag: '20200412'
+        commit: f23083c2f1c2884c939e183dcee190ec319f6f79
+        x-checker-data:
+          type: json
+          url: https://api.github.com/repos/Winetricks/winetricks/releases
+          tag-query: >-
+            map(select(.name | test("^[0-9].*[0-9]$"))) | first |
+            .tag_name
+          version-query: $tag | sub("^[vV]"; "")
+          timestamp-query: >-
+            map(select(.name | test("^[0-9].*[0-9]$"))) | first |
+            .published_at
     modules:
 
       - name: p7zip
