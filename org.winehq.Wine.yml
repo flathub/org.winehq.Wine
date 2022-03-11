@@ -213,6 +213,27 @@ modules:
         x86_64: *compat_i386_opts
     sources: *vkd3d-sources
 
+  - name: openldap
+    config-opts: &openldap-config-opts
+      - --disable-slapd
+      - --disable-slurpd
+      - --disable-bdb
+      - --disable-hdb
+    cleanup: &openldap-cleanup
+      - /bin
+    sources: &openldap-sources
+      - type: archive
+        url: https://www.openldap.org/software/download/OpenLDAP/openldap-release/openldap-2.6.1.tgz
+        sha256: 9d576ea6962d7db8a2e2808574e8c257c15aef55f403a1fb5a0faf35de70e6f3
+
+  - name: openldap-32bit
+    build-options:
+      arch:
+        x86_64: *compat_i386_opts
+    config-opts: *openldap-config-opts
+    cleanup: *openldap-cleanup
+    sources: *openldap-sources
+
   # Native arch build
 
   - name: wine
