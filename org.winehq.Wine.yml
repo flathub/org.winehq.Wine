@@ -93,6 +93,9 @@ sdk-extensions:
 
 build-options:
   append-path: /usr/lib/sdk/mingw-w64/bin
+  env:
+    PERL5LIB: /app/lib/perl5/
+    PERL_MM_OPT: INSTALL_BASE=/app
 
 x-compat-i386-opts: &compat_i386_opts
   prepend-pkg-config-path: /app/lib32/pkgconfig:/usr/lib/i386-linux-gnu/pkgconfig
