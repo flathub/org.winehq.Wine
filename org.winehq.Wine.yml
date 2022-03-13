@@ -120,7 +120,7 @@ cleanup:
   - /bin/winemaker
   - /bin/wmc
   - /bin/wrc
-
+  - /include/wine
   - /lib/wine/*.def
   - /lib32/wine/*.def
 cleanup-commands:
