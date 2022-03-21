@@ -304,8 +304,8 @@ modules:
     sources:
       - type: git
         url: https://github.com/Winetricks/winetricks.git
-        tag: '20210825'
-        commit: fa11b11a91a984666bf83b42e09be33ec0d6b294
+        tag: 202203xx-testing2
+        commit: 71b2fb4408f3aeaa1c4b2c8962154064c8f43d52
         x-checker-data:
           type: json
           url: https://api.github.com/repos/Winetricks/winetricks/releases
