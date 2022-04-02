@@ -366,15 +366,8 @@ modules:
         tag: '20220328'
         commit: 7e813223df0f15c6be9d1c319f7dc0f1e5e728f0
         x-checker-data:
-          type: json
-          url: https://api.github.com/repos/Winetricks/winetricks/releases
-          tag-query: >-
-            map(select(.name | test("^[0-9].*[0-9]$"))) | first |
-            .tag_name
-          version-query: $tag | sub("^[vV]"; "")
-          timestamp-query: >-
-            map(select(.name | test("^[0-9].*[0-9]$"))) | first |
-            .published_at
+          type: git
+          tag-pattern: ^(\d+)$
     modules:
 
       - name: p7zip
