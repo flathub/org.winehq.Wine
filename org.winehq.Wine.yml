@@ -293,6 +293,21 @@ modules:
       - /lib32/samba
     sources: *samba-sources
 
+  - name: unixodbc
+    sources: &unixodbc-sources
+      - type: archive
+        url: http://www.unixodbc.org/unixODBC-2.3.9.tar.gz
+        sha256: 52833eac3d681c8b0c9a5a65f2ebd745b3a964f208fc748f977e44015a31b207
+    cleanup: &unixodbc-cleanup
+      - /bin
+
+  - name: unixodbc-32bit
+    build-options:
+      arch:
+        x86_64: *compat_i386_opts
+    sources: *unixodbc-sources
+    cleanup: *unixodbc-cleanup
+
   # Native arch build
 
   - name: wine
