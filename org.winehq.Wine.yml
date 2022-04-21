@@ -336,6 +336,8 @@ modules:
       - type: archive
         url: https://dl.winehq.org/wine/source/7.0/wine-7.0.tar.xz
         sha256: 5b43e27d5c085cb18f97394e46180310d5eef7c1d91c6895432a3889b2de086b
+        x-addons-url: &wine-addons-url >-
+          https://source.winehq.org/git/wine.git/blob_plain/refs/heads/stable:/dlls/appwiz.cpl/addons.c
         x-checker-data:
           type: html
           url: https://source.winehq.org/git/wine.git/blob_plain/refs/heads/stable:/VERSION
@@ -458,11 +460,22 @@ modules:
           - x86_64
         url: https://dl.winehq.org/wine/wine-gecko/2.47.2/wine-gecko-2.47.2-x86.msi
         sha256: e520ce7336cd420cd09c91337d87e74bb420300fd5cbc6f724c1802766b6a61d
+        x-checker-data:
+          type: html
+          url: *wine-addons-url
+          version-pattern: &wine-gecko-version-pattern >-
+            GECKO_VERSION\s+"(\d[\d\.]+\d)"
+          url-template: https://dl.winehq.org/wine/wine-gecko/$version/wine-gecko-$version-x86.msi
       - type: file
         only-arches:
           - x86_64
         url: https://dl.winehq.org/wine/wine-gecko/2.47.2/wine-gecko-2.47.2-x86_64.msi
         sha256: 0596761024823ff3c21f13e1cd5cd3e89dccc698294d62974d8930aeda86ce45
+        x-checker-data:
+          type: html
+          url: *wine-addons-url
+          version-pattern: *wine-gecko-version-pattern
+          url-template: https://dl.winehq.org/wine/wine-gecko/$version/wine-gecko-$version-x86_64.msi
       - type: file
         path: org.winehq.Wine.gecko.metainfo.xml
 
@@ -486,6 +499,11 @@ modules:
         url: https://dl.winehq.org/wine/wine-mono/7.0.0/wine-mono-7.0.0-x86.tar.xz
         strip-components: 0
         sha256: 2a047893f047b4f0f5b480f1947b7dda546cee3fec080beb105bf5759c563cd3
+        x-checker-data:
+          type: html
+          url: *wine-addons-url
+          version-pattern: MONO_VERSION\s+"(\d[\d\.]+\d)"
+          url-template: https://dl.winehq.org/wine/wine-mono/$version/wine-mono-$version-x86.tar.xz
       - type: file
         path: org.winehq.Wine.mono.metainfo.xml
 
