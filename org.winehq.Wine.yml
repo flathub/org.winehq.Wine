@@ -185,8 +185,8 @@ modules:
       - -DGSTREAMER=ON
     sources: &FAudio-sources
       - type: archive
-        url: https://github.com/FNA-XNA/FAudio/archive/22.04/FAudio-22.04.tar.gz
-        sha256: ee1b9b329d17ba65bf48d90aecca27e3226983d3807dec04dcad7e6d4922f4ab
+        url: https://github.com/FNA-XNA/FAudio/archive/22.05/FAudio-22.05.tar.gz
+        sha256: d1e68f6cf4413aafc027c485796e9162ae5fb0df29bbf1cdb31ac7861b67f72a
         x-checker-data:
           type: json
           url: https://api.github.com/repos/FNA-XNA/FAudio/releases/latest
