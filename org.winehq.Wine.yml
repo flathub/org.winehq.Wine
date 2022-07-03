@@ -257,6 +257,10 @@ modules:
       - type: archive
         url: https://download.samba.org/pub/samba/samba-4.15.6.tar.gz
         sha256: 0575b999a9048445820428dc540ba8a9527ce596fa66af02ea2ba1ea9578bcb4
+        x-checker-data:
+          type: html
+          url: https://download.samba.org/pub/samba/
+          pattern: (samba-(\d+\.\d+\.\d+)\.tar\.gz)
     modules:
       - name: parse-yapp
         buildsystem: simple
