@@ -1,11 +1,11 @@
 id: org.winehq.Wine
-default-branch: &app-version stable-21.08
-x-extension-versions: &extension-versions stable;stable-21.08
+default-branch: &app-version stable-22.08
+x-extension-versions: &extension-versions stable;stable-22.08
 sdk: org.freedesktop.Sdk
 runtime: org.freedesktop.Platform
-runtime-version: &runtime-version '21.08'
+runtime-version: &runtime-version '22.08'
 x-gl-version: &gl-version '1.4'
-x-gl-versions: &gl-versions 21.08;1.4
+x-gl-versions: &gl-versions 22.08;1.4
 finish-args:
   - --share=ipc
   - --socket=x11
