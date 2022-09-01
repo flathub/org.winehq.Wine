@@ -1,8 +1,11 @@
 id: org.winehq.Wine
-default-branch: stable-21.08
+default-branch: &app-version stable-21.08
+x-extension-versions: &extension-versions stable;stable-21.08
 sdk: org.freedesktop.Sdk
 runtime: org.freedesktop.Platform
-runtime-version: '21.08'
+runtime-version: &runtime-version '21.08'
+x-gl-version: &gl-version '1.4'
+x-gl-versions: &gl-versions 21.08;1.4
 finish-args:
   - --share=ipc
   - --socket=x11
@@ -30,17 +33,17 @@ rename-icon: wine
 add-extensions:
   org.freedesktop.Platform.Compat.i386:
     directory: lib/i386-linux-gnu
-    version: '21.08'
+    version: *runtime-version
 
   org.freedesktop.Platform.Compat.i386.Debug:
     directory: lib/debug/lib/i386-linux-gnu
-    version: '21.08'
+    version: *runtime-version
     no-autodownload: true
 
   org.freedesktop.Platform.GL32:
     directory: lib/i386-linux-gnu/GL
-    version: '1.4'
-    versions: 21.08;1.4
+    version: *gl-version
+    versions: *gl-versions
     subdirectories: true
     no-autodownload: true
     autodelete: false
@@ -51,7 +54,7 @@ add-extensions:
 
   org.freedesktop.Platform.VAAPI.Intel.i386:
     directory: lib/i386-linux-gnu/dri/intel-vaapi-driver
-    version: '21.08'
+    version: *runtime-version
     subdirectories: true
     no-autodownload: true
     autodelete: false
@@ -62,13 +65,13 @@ add-extensions:
   org.freedesktop.Platform.ffmpeg-full:
     directory: lib/ffmpeg
     add-ld-path: .
-    version: '21.08'
+    version: *runtime-version
     autodelete: false
 
   org.freedesktop.Platform.ffmpeg_full.i386:
     directory: lib32/ffmpeg
     add-ld-path: .
-    version: '21.08'
+    version: *runtime-version
     autodelete: false
 
   org.winehq.Wine.gecko:
@@ -83,8 +86,8 @@ add-extensions:
     directory: dlls
     subdirectories: true
     merge-dirs: lib;lib32;
-    version: stable-21.08
-    versions: stable;stable-21.08;
+    version: *app-version
+    versions: *extension-versions
 
 sdk-extensions:
   - org.freedesktop.Sdk.Compat.i386
