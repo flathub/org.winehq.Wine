@@ -188,8 +188,8 @@ modules:
       - -DGSTREAMER=ON
     sources: &FAudio-sources
       - type: archive
-        url: https://github.com/FNA-XNA/FAudio/archive/22.10/FAudio-22.10.tar.gz
-        sha256: c2b3d52cb4a649582f4c10f3fd8245985b305b16f6c46dd191cb296a71f9250a
+        url: https://github.com/FNA-XNA/FAudio/archive/22.12/FAudio-22.12.tar.gz
+        sha256: 1c326ebc5baec1541442e5f6f45cc13bbdeecc96bd54d920897025b3aa0c7f6e
         x-checker-data:
           type: json
           url: https://api.github.com/repos/FNA-XNA/FAudio/releases/latest
@@ -233,8 +233,8 @@ modules:
       - /share/man
     sources: &krb5-sources
       - type: archive
-        url: https://github.com/krb5/krb5/archive/refs/tags/krb5-1.20-final.tar.gz
-        sha256: cbbf7ff2fb25d44cf3ed6fee120c073cd291af2bdcc3f466433f0482e238fb59
+        url: https://github.com/krb5/krb5/archive/refs/tags/krb5-1.20.1-final.tar.gz
+        sha256: ec3861c3bec29aa8da9281953c680edfdab1754d1b1db8761c1d824e4b25496a
         x-checker-data:
           type: anitya
           project-id: 13287
@@ -301,8 +301,8 @@ modules:
       - /sbin
     sources: &samba-sources
       - type: archive
-        url: https://download.samba.org/pub/samba/samba-4.17.1.tar.gz
-        sha256: 1b939d03f8ca57194c413ed863014a3850c9ce9f9e31c2a7df706806fba77c01
+        url: https://download.samba.org/pub/samba/samba-4.17.3.tar.gz
+        sha256: 5d1c420cb31ec613c786f98537f959659081edc6be8373e68e87140868938e26
         x-checker-data:
           type: html
           url: https://download.samba.org/pub/samba/
@@ -394,8 +394,8 @@ modules:
       - INSTALL_PROGRAM_FLAGS=-s
     sources: &wine-sources
       - type: archive
-        url: https://dl.winehq.org/wine/source/7.0/wine-7.0.tar.xz
-        sha256: 5b43e27d5c085cb18f97394e46180310d5eef7c1d91c6895432a3889b2de086b
+        url: https://dl.winehq.org/wine/source/7.0/wine-7.0.1.tar.xz
+        sha256: 807caa78121b16250f240d2828a07ca4e3c609739e5524ef0f4cf89ae49a816c
         x-addons-url: &wine-addons-url >-
           https://source.winehq.org/git/wine.git/blob_plain/refs/heads/stable:/dlls/appwiz.cpl/addons.c
         x-checker-data:
