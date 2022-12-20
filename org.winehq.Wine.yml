@@ -31,45 +31,8 @@ rename-desktop-file: wine.desktop
 rename-icon: wine
 
 add-extensions:
-  org.freedesktop.Platform.Compat.i386:
-    directory: lib/i386-linux-gnu
-    version: *runtime-version
-
-  org.freedesktop.Platform.Compat.i386.Debug:
-    directory: lib/debug/lib/i386-linux-gnu
-    version: *runtime-version
-    no-autodownload: true
-
-  org.freedesktop.Platform.GL32:
-    directory: lib/i386-linux-gnu/GL
-    version: *gl-version
-    versions: *gl-versions
-    subdirectories: true
-    no-autodownload: true
-    autodelete: false
-    add-ld-path: lib
-    merge-dirs: vulkan/icd.d;glvnd/egl_vendor.d;OpenCL/vendors;lib/dri;lib/d3d;vulkan/explicit_layer.d
-    download-if: active-gl-driver
-    enable-if: active-gl-driver
-
-  org.freedesktop.Platform.VAAPI.Intel.i386:
-    directory: lib/i386-linux-gnu/dri/intel-vaapi-driver
-    version: *runtime-version
-    subdirectories: true
-    no-autodownload: true
-    autodelete: false
-    add-ld-path: lib
-    download-if: active-gl-driver
-    enable-if: active-gl-driver
-
   org.freedesktop.Platform.ffmpeg-full:
     directory: lib/ffmpeg
-    add-ld-path: .
-    version: *runtime-version
-    autodelete: false
-
-  org.freedesktop.Platform.ffmpeg_full.i386:
-    directory: lib32/ffmpeg
     add-ld-path: .
     version: *runtime-version
     autodelete: false
@@ -90,8 +53,6 @@ add-extensions:
     versions: *extension-versions
 
 sdk-extensions:
-  - org.freedesktop.Sdk.Compat.i386
-  - org.freedesktop.Sdk.Extension.toolchain-i386
   - org.freedesktop.Sdk.Extension.mingw-w64
 
 build-options:
@@ -99,17 +60,6 @@ build-options:
   env:
     PERL5LIB: /app/lib/perl5/
     PERL_MM_OPT: INSTALL_BASE=/app
-
-x-compat-i386-opts: &compat_i386_opts
-  prepend-pkg-config-path: /app/lib32/pkgconfig:/usr/lib/i386-linux-gnu/pkgconfig
-  # Some autotools-based builds will fail if -L/app/lib32 isn't first
-  ldflags: -L/app/lib32 -Wl,-rpath-link=/app/lib32 -Wl,-z,relro,-z,now -Wl,--as-needed
-  ldflags-override: true
-  append-path: /usr/lib/sdk/toolchain-i386/bin
-  env:
-    CC: ccache i686-unknown-linux-gnu-gcc
-    CXX: ccache i686-unknown-linux-gnu-g++
-  libdir: /app/lib32
 
 separate-locales: false
 cleanup:
@@ -168,20 +118,6 @@ modules:
               timestamp-query: .published_at
               url-query: .assets[] | select(.name=="eudev-\($version).tar.gz") | .browser_download_url
 
-  - name: libusb-32bit
-    build-options:
-      arch:
-        x86_64: *compat_i386_opts
-    sources: *libusb-sources
-    modules:
-
-      - name: eudev-32bit
-        build-options:
-          arch:
-            x86_64: *compat_i386_opts
-        cleanup: *eudev-cleanup
-        sources: *eudev-sources
-
   - name: FAudio
     buildsystem: cmake-ninja
     config-opts: &FAudio-config-opts
@@ -199,25 +135,11 @@ modules:
           url-query: >-
             "https://github.com/FNA-XNA/FAudio/archive/\($version)/FAudio-\($version).tar.gz"
 
-  - name: FAudio-32bit
-    build-options:
-      arch:
-        x86_64: *compat_i386_opts
-    buildsystem: cmake-ninja
-    config-opts: *FAudio-config-opts
-    sources: *FAudio-sources
-
   - name: vkd3d
     sources: &vkd3d-sources
       - type: archive
         url: https://dl.winehq.org/vkd3d/source/vkd3d-1.5.tar.xz
         sha256: e3b3c355f46f7cbfc19e710a478bcb2bee267a5f360e7e6406238cea52ce2cfc
-
-  - name: vkd3d-32bit
-    build-options:
-      arch:
-        x86_64: *compat_i386_opts
-    sources: *vkd3d-sources
 
   - name: krb5
     subdir: src
@@ -245,15 +167,6 @@ modules:
         commands:
           - autoreconf -si
 
-  - name: krb5-32bit
-    subdir: src
-    build-options:
-      arch:
-        x86_64: *compat_i386_opts
-    config-opts: *krb5-config-opts
-    sources: *krb5-sources
-    cleanup: *krb5-cleanup
-
   - name: krb5-config
     buildsystem: simple
     build-commands:
@@ -274,14 +187,6 @@ modules:
       - type: archive
         url: https://www.openldap.org/software/download/OpenLDAP/openldap-release/openldap-2.6.1.tgz
         sha256: 9d576ea6962d7db8a2e2808574e8c257c15aef55f403a1fb5a0faf35de70e6f3
-
-  - name: openldap-32bit
-    build-options:
-      arch:
-        x86_64: *compat_i386_opts
-    config-opts: *openldap-config-opts
-    cleanup: *openldap-cleanup
-    sources: *openldap-sources
 
   - name: samba
     build-options:
@@ -338,21 +243,6 @@ modules:
             url: https://github.com/thkukuk/rpcsvc-proto/archive/v1.4.3.tar.gz
             sha256: 6906e0f81bb016bd0216460fc879d3d9f2f6d743be7dfb0d8b32d140226d5ef8
 
-  - name: samba-32bit
-    build-options:
-      arch:
-        x86_64: *compat_i386_opts
-      config-opts:
-        - --bindir=bin32
-        - --sbindir=sbin32
-        - --libexecdir=lib32/libexec
-    config-opts: *samba-config-opts
-    cleanup:
-      - /bin32
-      - /sbin32
-      - /lib32/samba
-    sources: *samba-sources
-
   - name: unixodbc
     sources: &unixodbc-sources
       - type: archive
@@ -360,13 +250,6 @@ modules:
         sha256: 52833eac3d681c8b0c9a5a65f2ebd745b3a964f208fc748f977e44015a31b207
     cleanup: &unixodbc-cleanup
       - /bin
-
-  - name: unixodbc-32bit
-    build-options:
-      arch:
-        x86_64: *compat_i386_opts
-    sources: *unixodbc-sources
-    cleanup: *unixodbc-cleanup
 
   # Native arch build
 
@@ -376,7 +259,7 @@ modules:
         x86_64:
           config-opts:
             - --enable-win64
-            - --with-mingw=ccache x86_64-w64-mingw32-gcc
+            - --enable-archs=x86_64,i386
           libdir: /app/lib
       env:
         LIBDIR: lib
@@ -407,27 +290,6 @@ modules:
       - type: patch
         paths:
           - patches/wine/loader-prefer-winedllpath.patch
-
-  # 32-bit compatibility build
-
-  - name: wine-32bit
-    only-arches:
-      - x86_64
-    build-options:
-      arch:
-        x86_64: *compat_i386_opts
-      config-opts:
-        - --bindir=${FLATPAK_DEST}/bin32
-        - --with-mingw=ccache i686-w64-mingw32-gcc
-      env:
-        LIBDIR: lib32
-    config-opts: *wine-config-opts
-    make-install-args: *wine-make-install-args
-    post-install:
-      - mv ${FLATPAK_DEST}/bin32/wine{,-preloader} ${FLATPAK_DEST}/bin/
-    sources: *wine-sources
-    cleanup:
-      - /bin32
 
   # Tools
 
