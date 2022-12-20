@@ -1,5 +1,5 @@
 id: org.winehq.Wine
-default-branch: &app-version stable-22.08
+default-branch: &app-version stable-wow-22.08
 x-extension-versions: &extension-versions stable;stable-22.08
 sdk: org.freedesktop.Sdk
 runtime: org.freedesktop.Platform
