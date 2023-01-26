@@ -301,8 +301,8 @@ modules:
       - /sbin
     sources: &samba-sources
       - type: archive
-        url: https://download.samba.org/pub/samba/samba-4.17.4.tar.gz
-        sha256: c0512079db4cac707ccea4c18aebbd6b2eb3acf6e90735e7f645a326be1f4537
+        url: https://download.samba.org/pub/samba/samba-4.17.5.tar.gz
+        sha256: ebb7880d474ffc09d73b5fc77bcbd657f6235910337331a9c24d7f69ca11442b
         x-checker-data:
           type: html
           url: https://download.samba.org/pub/samba/
@@ -394,8 +394,8 @@ modules:
       - INSTALL_PROGRAM_FLAGS=-s
     sources: &wine-sources
       - type: archive
-        url: https://dl.winehq.org/wine/source/7.0/wine-7.0.1.tar.xz
-        sha256: 807caa78121b16250f240d2828a07ca4e3c609739e5524ef0f4cf89ae49a816c
+        url: https://dl.winehq.org/wine/source/8.0/wine-8.0.tar.xz
+        sha256: 0272c20938f8721ae4510afaa8b36037457dd57661e4d664231079b9e91c792e
         x-addons-url: &wine-addons-url >-
           https://source.winehq.org/git/wine.git/blob_plain/refs/heads/stable:/dlls/appwiz.cpl/addons.c
         x-checker-data:
@@ -518,8 +518,8 @@ modules:
         only-arches:
           - i386
           - x86_64
-        url: https://dl.winehq.org/wine/wine-gecko/2.47.2/wine-gecko-2.47.2-x86.msi
-        sha256: e520ce7336cd420cd09c91337d87e74bb420300fd5cbc6f724c1802766b6a61d
+        url: https://dl.winehq.org/wine/wine-gecko/2.47.3/wine-gecko-2.47.3-x86.msi
+        sha256: e5b9b06d3ce355646a8d2e72e044e37e1e0c8d18464eb1985adcd187a7f48e01
         x-checker-data:
           type: html
           url: *wine-addons-url
@@ -529,8 +529,8 @@ modules:
       - type: file
         only-arches:
           - x86_64
-        url: https://dl.winehq.org/wine/wine-gecko/2.47.2/wine-gecko-2.47.2-x86_64.msi
-        sha256: 0596761024823ff3c21f13e1cd5cd3e89dccc698294d62974d8930aeda86ce45
+        url: https://dl.winehq.org/wine/wine-gecko/2.47.3/wine-gecko-2.47.3-x86_64.msi
+        sha256: a53ee954392b6d1fe3d68545f6e4e2a97afbc8dc8b03a8b443349545ce139675
         x-checker-data:
           type: html
           url: *wine-addons-url
@@ -556,9 +556,9 @@ modules:
         --origin=flatpak ${FLATPAK_ID}.mono
     sources:
       - type: archive
-        url: https://dl.winehq.org/wine/wine-mono/7.0.0/wine-mono-7.0.0-x86.tar.xz
+        url: https://dl.winehq.org/wine/wine-mono/7.4.0/wine-mono-7.4.0-x86.tar.xz
         strip-components: 0
-        sha256: 2a047893f047b4f0f5b480f1947b7dda546cee3fec080beb105bf5759c563cd3
+        sha256: 9249ece664bcf2fecb1308ea1d2542c72923df9fe3df891986f137b2266a9ba3
         x-checker-data:
           type: html
           url: *wine-addons-url
