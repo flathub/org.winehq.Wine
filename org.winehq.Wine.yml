@@ -301,8 +301,8 @@ modules:
       - /sbin
     sources: &samba-sources
       - type: archive
-        url: https://download.samba.org/pub/samba/samba-4.18.1.tar.gz
-        sha256: cedeaa2f244a0862c4f73b7b9f2ff92d181fd3ba7df80284a2f25f7713b9cc0e
+        url: https://download.samba.org/pub/samba/samba-4.18.2.tar.gz
+        sha256: 5bf87e179616cd12a52d85fb8b26eec709f13709a2b67fe42b1fb0213f7e8106
         x-checker-data:
           type: html
           url: https://download.samba.org/pub/samba/
