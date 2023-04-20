@@ -301,8 +301,8 @@ modules:
       - /sbin
     sources: &samba-sources
       - type: archive
-        url: https://download.samba.org/pub/samba/samba-4.18.1.tar.gz
-        sha256: cedeaa2f244a0862c4f73b7b9f2ff92d181fd3ba7df80284a2f25f7713b9cc0e
+        url: https://download.samba.org/pub/samba/samba-4.18.2.tar.gz
+        sha256: 5bf87e179616cd12a52d85fb8b26eec709f13709a2b67fe42b1fb0213f7e8106
         x-checker-data:
           type: html
           url: https://download.samba.org/pub/samba/
@@ -394,8 +394,8 @@ modules:
       - INSTALL_PROGRAM_FLAGS=-s
     sources: &wine-sources
       - type: archive
-        url: https://dl.winehq.org/wine/source/8.0/wine-8.0.tar.xz
-        sha256: 0272c20938f8721ae4510afaa8b36037457dd57661e4d664231079b9e91c792e
+        url: https://dl.winehq.org/wine/source/8.0/wine-8.0.1.tar.xz
+        sha256: 22035f3836b4f9c3b1940ad90f9b9e3c1be09234236d2a80d893180535c75b7d
         x-addons-url: &wine-addons-url >-
           https://source.winehq.org/git/wine.git/blob_plain/refs/heads/stable:/dlls/appwiz.cpl/addons.c
         x-checker-data:
