@@ -155,7 +155,7 @@ modules:
           - /sbin
           - /lib*/udev
         post-install:
-          - udevadm hwdb --update --root=${FLATPAK_DEST}
+          - udevadm hwdb --update --usr
         sources: &eudev-sources
           - type: archive
             url: https://github.com/eudev-project/eudev/releases/download/v3.2.12/eudev-3.2.12.tar.gz
