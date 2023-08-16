@@ -188,8 +188,8 @@ modules:
       - -DGSTREAMER=ON
     sources: &FAudio-sources
       - type: archive
-        url: https://github.com/FNA-XNA/FAudio/archive/23.07/FAudio-23.07.tar.gz
-        sha256: 9f197b778a69dc70f7fd2def547e87c3f1c369edc03b1d4085feb2742414f62a
+        url: https://github.com/FNA-XNA/FAudio/archive/23.08/FAudio-23.08.tar.gz
+        sha256: bf73c20a2082338fe0b3c283fdb3de08b5f2802bfaea8acc59c70c05567e94af
         x-checker-data:
           type: json
           url: https://api.github.com/repos/FNA-XNA/FAudio/releases/latest
@@ -301,8 +301,8 @@ modules:
       - /sbin
     sources: &samba-sources
       - type: archive
-        url: https://download.samba.org/pub/samba/samba-4.18.5.tar.gz
-        sha256: 095256ac332e1d9fbf9b7ff7823f92a3233d3ed658ce7fc9b33905c2243f447f
+        url: https://download.samba.org/pub/samba/samba-4.18.6.tar.gz
+        sha256: 284c8a994ce989c87cd6808c390fcb9d00c36b21a0dc1a8a75474b67c9e715e7
         x-checker-data:
           type: html
           url: https://download.samba.org/pub/samba/
