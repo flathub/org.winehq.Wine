@@ -212,6 +212,14 @@ modules:
       - type: archive
         url: https://dl.winehq.org/vkd3d/source/vkd3d-1.5.tar.xz
         sha256: e3b3c355f46f7cbfc19e710a478bcb2bee267a5f360e7e6406238cea52ce2cfc
+    modules:
+      - name: spirv-headers
+        buildsystem: cmake-ninja
+        sources:
+          - type: git
+            url: https://github.com/KhronosGroup/SPIRV-Headers.git
+            tag: sdk-1.3.261.1
+            commit: 124a9665e464ef98b8b718d572d5f329311061eb
 
   - name: vkd3d-32bit
     build-options:
