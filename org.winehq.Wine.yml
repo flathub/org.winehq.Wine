@@ -115,6 +115,7 @@ separate-locales: false
 cleanup:
   - '*.a'
   - '*.la'
+  - /share/doc
   - /share/man
 
   - /bin/function_grep.pl
