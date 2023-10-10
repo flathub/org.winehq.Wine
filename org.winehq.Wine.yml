@@ -282,8 +282,8 @@ modules:
       - /sbin
     sources: &samba-sources
       - type: archive
-        url: https://download.samba.org/pub/samba/samba-4.19.0.tar.gz
-        sha256: 28f98ceab75a6a59432912fa110fc8c716abcab1ed6d8bdd4393d178acff3d20
+        url: https://download.samba.org/pub/samba/samba-4.19.1.tar.gz
+        sha256: ce3b7f0d18bf91aa5fd646e8bb385a3b35375b703c6e5123b02b85a1abc81879
         x-checker-data:
           type: html
           url: https://download.samba.org/pub/samba/
