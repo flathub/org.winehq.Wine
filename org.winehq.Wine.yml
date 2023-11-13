@@ -139,8 +139,8 @@ modules:
   - name: libusb
     sources: &libusb-sources
       - type: archive
-        url: https://github.com/libusb/libusb/releases/download/v1.0.26/libusb-1.0.26.tar.bz2
-        sha256: 12ce7a61fc9854d1d2a1ffe095f7b5fac19ddba095c259e6067a46500381b5a5
+        url: https://github.com/libusb/libusb/releases/download/v1.0.25/libusb-1.0.25.tar.bz2
+        sha256: 8a28ef197a797ebac2702f095e81975e2b02b2eeff2774fa909c78a74ef50849
         x-checker-data:
           type: json
           url: https://api.github.com/repos/libusb/libusb/releases/latest
@@ -161,8 +161,8 @@ modules:
       - -DGSTREAMER=ON
     sources: &FAudio-sources
       - type: archive
-        url: https://github.com/FNA-XNA/FAudio/archive/23.10/FAudio-23.10.tar.gz
-        sha256: eb111e76913c60ccae50607a8191efeade09837b3bb08ee66f168488ab714d56
+        url: https://github.com/FNA-XNA/FAudio/archive/23.11/FAudio-23.11.tar.gz
+        sha256: dafa0ff6630c19d293e0432babdf04e40e7029ddd87e580c4ff1cecc933f48a5
         x-checker-data:
           type: json
           url: https://api.github.com/repos/FNA-XNA/FAudio/releases/latest
