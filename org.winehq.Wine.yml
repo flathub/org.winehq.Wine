@@ -356,7 +356,7 @@ modules:
       arch:
         x86_64:
           config-opts:
-            - --enable-win64
+            - --enable-archs=i386,x86_64
             - --with-mingw=ccache x86_64-w64-mingw32-gcc
           libdir: /app/lib
       env:
@@ -388,27 +388,6 @@ modules:
       - type: patch
         paths:
           - patches/wine/loader-prefer-winedllpath.patch
-
-  # 32-bit compatibility build
-
-  - name: wine-32bit
-    only-arches:
-      - x86_64
-    build-options:
-      arch:
-        x86_64: *compat_i386_opts
-      config-opts:
-        - --bindir=${FLATPAK_DEST}/bin32
-        - --with-mingw=ccache i686-w64-mingw32-gcc
-      env:
-        LIBDIR: lib32
-    config-opts: *wine-config-opts
-    make-install-args: *wine-make-install-args
-    post-install:
-      - mv ${FLATPAK_DEST}/bin32/wine{,-preloader} ${FLATPAK_DEST}/bin/
-    sources: *wine-sources
-    cleanup:
-      - /bin32
 
   # Tools
 
