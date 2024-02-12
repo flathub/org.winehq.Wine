@@ -282,11 +282,11 @@ modules:
       - /sbin
     sources: &samba-sources
       - type: archive
-        url: https://download.samba.org/pub/samba/samba-4.19.2.tar.gz
+        url: https://download.samba.org/pub/samba/stable/samba-4.19.2.tar.gz
         sha256: 9e63f0505e1c631f1db0b7a9349a51e925c026ca03af3fd5d812228bb597d393
         x-checker-data:
           type: html
-          url: https://download.samba.org/pub/samba/
+          url: https://download.samba.org/pub/samba/stable/
           pattern: (samba-(\d+\.\d+\.\d+)\.tar\.gz)
     modules:
       - name: perl-Parse-Yapp
