@@ -5,7 +5,11 @@
   <metadata_license>FSFAP</metadata_license>
   <project_license>LGPL-2.1+</project_license>
   <name>Wine</name>
-  <summary>Run Windows applications on Linux, BSD, Solaris and Mac OS X</summary>
+  <summary>Windows compatibility layer</summary>
+  <developer_name>Wine Project</developer_name>
+  <developer id="winehq.org">
+    <name>Wine Project</name>
+  </developer>
 
   <description>
     <p>
@@ -28,15 +32,19 @@
 
   <screenshots>
     <screenshot type="default">
+      <caption>MS Outlook 2010 running via wine</caption>
       <image>https://dl.winehq.org/share/images/screenshots/outlook2010.jpg</image>
     </screenshot>
     <screenshot>
+      <caption>The Windows Steam client running on linux via wine</caption>
       <image>https://dl.winehq.org/share/images/screenshots/steam.jpg</image>
     </screenshot>
     <screenshot>
+      <caption>GOG Galaxy client running via wine</caption>
       <image>https://dl.winehq.org/share/images/screenshots/goggalaxy.jpg</image>
     </screenshot>
     <screenshot>
+      <caption>A horse in the game "Skyrim Special Edition" running via wine</caption>
       <image>https://dl.winehq.org/share/images/screenshots/skyrim_specialed.jpg</image>
     </screenshot>
   </screenshots>
