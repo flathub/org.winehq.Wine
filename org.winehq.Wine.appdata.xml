@@ -6,7 +6,7 @@
   <project_license>LGPL-2.1+</project_license>
   <name>Wine</name>
   <summary>Windows compatibility layer</summary>
-  <developer_name>Wine Project</developer_name>
+
   <developer id="winehq.org">
     <name>Wine Project</name>
   </developer>
@@ -48,6 +48,10 @@
       <image>https://dl.winehq.org/share/images/screenshots/skyrim_specialed.jpg</image>
     </screenshot>
   </screenshots>
+
+  <provides>
+    <binary>wine</binary>
+  </provides>
 
   <content_rating type="oars-1.1"/>
 
