@@ -173,8 +173,8 @@ modules:
       - -DGSTREAMER=ON
     sources: &FAudio-sources
       - type: archive
-        url: https://github.com/FNA-XNA/FAudio/archive/24.06/FAudio-24.06.tar.gz
-        sha256: 62a6d0e6254031e7a9f485afe4ad5fe35f86eafbf232f37d64ffc618bb89f703
+        url: https://github.com/FNA-XNA/FAudio/archive/24.07/FAudio-24.07.tar.gz
+        sha256: f7cd15ed111133fbc1ac387fa3e715b3a67d5e4cf59d8e290ac85d856d92367b
         x-checker-data:
           type: json
           url: https://api.github.com/repos/FNA-XNA/FAudio/releases/latest
@@ -226,8 +226,8 @@ modules:
       - /share/man
     sources: &krb5-sources
       - type: archive
-        url: https://github.com/krb5/krb5/archive/refs/tags/krb5-1.21.2-final.tar.gz
-        sha256: 5827fa39ead0e7f7b8a158799eb5d50b194129e81b378892caedcafe50c5c195
+        url: https://github.com/krb5/krb5/archive/refs/tags/krb5-1.21.3-final.tar.gz
+        sha256: 2157d92020d408ed63ebcd886a92d1346a1383b0f91123a0473b4f69b4a24861
         x-checker-data:
           type: anitya
           project-id: 13287
@@ -294,8 +294,8 @@ modules:
       - /sbin
     sources: &samba-sources
       - type: archive
-        url: https://download.samba.org/pub/samba/stable/samba-4.20.1.tar.gz
-        sha256: f93c3af5295340d08106c7c0dcfb85e4f85057dfd14587aa8817beb31aff88f7
+        url: https://download.samba.org/pub/samba/stable/samba-4.20.2.tar.gz
+        sha256: f969ffed58ccf3e85cbbcc0e33a1726d025c2b40f42a653b1125b82b92d2e0e5
         x-checker-data:
           type: html
           url: https://download.samba.org/pub/samba/stable/
