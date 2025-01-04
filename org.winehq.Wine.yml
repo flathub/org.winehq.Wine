@@ -195,8 +195,8 @@ modules:
   - name: vkd3d
     sources: &vkd3d-sources
       - type: archive
-        url: https://dl.winehq.org/vkd3d/source/vkd3d-1.9.tar.xz
-        sha256: 9d1ebc6f36cccf40cffda3176851f73a0501b90c4d04e782abe79ca703057a4b
+        url: https://dl.winehq.org/vkd3d/source/vkd3d-1.14.tar.xz
+        sha256: c94015d59ebe8ae72c4d802af5ca1517d9744548842a4e776534612a8d905485
     modules:
       - name: spirv-headers
         buildsystem: cmake-ninja
