@@ -294,8 +294,8 @@ modules:
       - /sbin
     sources: &samba-sources
       - type: archive
-        url: https://download.samba.org/pub/samba/stable/samba-4.20.4.tar.gz
-        sha256: 3a92e97eaeb345b6b32232f503e14d34f03a7aa64c451fe8c258a11bbda908e5
+        url: https://download.samba.org/pub/samba/stable/samba-4.21.3.tar.gz
+        sha256: ae2179a613e7a5d4088735ab100d4ca1cae0f92374d6307e22eaec13ad90125c
         x-checker-data:
           type: html
           url: https://download.samba.org/pub/samba/stable/
