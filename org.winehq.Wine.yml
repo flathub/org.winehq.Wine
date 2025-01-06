@@ -377,6 +377,7 @@ modules:
       - --disable-win16
       - --disable-tests
       - --with-x
+      - --with-wayland
       - --with-pulse
       - --with-dbus
       - --without-hal
