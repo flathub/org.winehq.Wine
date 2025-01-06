@@ -540,9 +540,9 @@ modules:
         ${FLATPAK_ID}.mono.metainfo.xml
     sources:
       - type: archive
-        url: https://dl.winehq.org/wine/wine-mono/8.1.0/wine-mono-8.1.0-x86.tar.xz
+        url: https://dl.winehq.org/wine/wine-mono/9.4.0/wine-mono-9.4.0-x86.tar.xz
         strip-components: 0
-        sha256: 4e3e8a40729e4c9e3e9e651cebe4f1aed8f9a4d22e991e6cd24608687f0eedd4
+        sha256: fd772219aacf46b825fa891a647af4a9ddf8439320101c231918b2037bf13858
         x-checker-data:
           type: html
           url: *wine-addons-url
