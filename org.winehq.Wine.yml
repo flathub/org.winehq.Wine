@@ -167,31 +167,6 @@ modules:
         x86_64: *compat_i386_opts
     sources: *libusb-sources
 
-  - name: FAudio
-    buildsystem: cmake-ninja
-    config-opts: &FAudio-config-opts
-      - -DGSTREAMER=ON
-    sources: &FAudio-sources
-      - type: archive
-        url: https://github.com/FNA-XNA/FAudio/archive/25.01/FAudio-25.01.tar.gz
-        sha256: 044a79222ac01eb0e279f0204e403f01dfea03d29163a721ec266135dd09fb95
-        x-checker-data:
-          type: json
-          url: https://api.github.com/repos/FNA-XNA/FAudio/releases/latest
-          tag-query: .tag_name
-          version-query: $tag | sub("^[vV]"; "")
-          timestamp-query: .published_at
-          url-query: >-
-            "https://github.com/FNA-XNA/FAudio/archive/\($version)/FAudio-\($version).tar.gz"
-
-  - name: FAudio-32bit
-    build-options:
-      arch:
-        x86_64: *compat_i386_opts
-    buildsystem: cmake-ninja
-    config-opts: *FAudio-config-opts
-    sources: *FAudio-sources
-
   - name: vkd3d
     sources: &vkd3d-sources
       - type: archive
