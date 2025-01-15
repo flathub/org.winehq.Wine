@@ -167,26 +167,6 @@ modules:
         x86_64: *compat_i386_opts
     sources: *libusb-sources
 
-  - name: vkd3d
-    sources: &vkd3d-sources
-      - type: archive
-        url: https://dl.winehq.org/vkd3d/source/vkd3d-1.14.tar.xz
-        sha256: c94015d59ebe8ae72c4d802af5ca1517d9744548842a4e776534612a8d905485
-    modules:
-      - name: spirv-headers
-        buildsystem: cmake-ninja
-        sources:
-          - type: git
-            url: https://github.com/KhronosGroup/SPIRV-Headers.git
-            tag: vulkan-sdk-1.3.296.0
-            commit: 2a9b6f951c7d6b04b6c21fe1bf3f475b68b84801
-
-  - name: vkd3d-32bit
-    build-options:
-      arch:
-        x86_64: *compat_i386_opts
-    sources: *vkd3d-sources
-
   - name: krb5
     subdir: src
     config-opts: &krb5-config-opts
@@ -355,7 +335,6 @@ modules:
       - --with-wayland
       - --with-pulse
       - --with-dbus
-      - --without-hal
       - --without-oss
     make-install-args: &wine-make-install-args
       - LDCONFIG=/bin/true
