@@ -210,27 +210,6 @@ modules:
       - type: file
         path: files/krb5.conf
 
-  - name: openldap
-    config-opts: &openldap-config-opts
-      - --disable-slapd
-      - --disable-slurpd
-      - --disable-bdb
-      - --disable-hdb
-    cleanup: &openldap-cleanup
-      - /bin
-    sources: &openldap-sources
-      - type: archive
-        url: https://www.openldap.org/software/download/OpenLDAP/openldap-release/openldap-2.6.9.tgz
-        sha256: 2cb7dc73e9c8340dff0d99357fbaa578abf30cc6619f0521972c555681e6b2ff
-
-  - name: openldap-32bit
-    build-options:
-      arch:
-        x86_64: *compat_i386_opts
-    config-opts: *openldap-config-opts
-    cleanup: *openldap-cleanup
-    sources: *openldap-sources
-
   - name: samba
     build-options:
       config-opts:
@@ -245,12 +224,13 @@ modules:
       - --without-ads
       - --without-pam
       - --without-systemd
+      - --without-ldb-lmdb
     cleanup:
       - /sbin
     sources: &samba-sources
       - type: archive
-        url: https://download.samba.org/pub/samba/stable/samba-4.20.6.tar.gz
-        sha256: 8fe37f9e7817b6583fa55a0a15568b8e6be8875513741312ef805484b102ccf7
+        url: https://download.samba.org/pub/samba/stable/samba-4.21.3.tar.gz
+        sha256: ae2179a613e7a5d4088735ab100d4ca1cae0f92374d6307e22eaec13ad90125c
         x-checker-data:
           type: html
           url: https://download.samba.org/pub/samba/stable/
