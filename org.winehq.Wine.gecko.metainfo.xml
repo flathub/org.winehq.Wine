@@ -11,4 +11,5 @@
       Windows Gecko library required for Wine.
     </p>
   </description>
+  <url type="homepage">https://gitlab.winehq.org/wine/wine/-/wikis/Gecko/</url>
 </component>
