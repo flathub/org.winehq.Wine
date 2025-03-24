@@ -1,5 +1,4 @@
 {
     "skip-icons-check": true,
-    "disable-external-data-checker": true,
     "only-arches": ["x86_64"]
 }
