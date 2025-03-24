@@ -108,9 +108,6 @@ sdk-extensions:
 
 build-options:
   append-path: /usr/lib/sdk/mingw-w64/bin
-  env:
-    PERL5LIB: /app/lib/perl5/
-    PERL_MM_OPT: INSTALL_BASE=/app
 
 x-compat-i386-opts: &compat_i386_opts
   prepend-pkg-config-path: /app/lib32/pkgconfig:/usr/lib/i386-linux-gnu/pkgconfig
@@ -405,9 +402,9 @@ modules:
         ${FLATPAK_ID}.mono.metainfo.xml
     sources:
       - type: archive
-        url: https://dl.winehq.org/wine/wine-mono/9.4.0/wine-mono-9.4.0-x86.tar.xz
+        url: https://dl.winehq.org/wine/wine-mono/10.0.0/wine-mono-10.0.0-x86.tar.xz
         strip-components: 0
-        sha256: fd772219aacf46b825fa891a647af4a9ddf8439320101c231918b2037bf13858
+        sha256: b487c444415789a8b25b3a6542afa668a6b6d6067c648626f323884443f7b70d
         x-checker-data:
           type: html
           url: *wine-addons-url
