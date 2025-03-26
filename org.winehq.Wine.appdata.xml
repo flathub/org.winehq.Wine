@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!-- Copyright (c) 2017 Jens Reyer <jre.winesim@gmail.com> -->
-<component type="desktop-application">
+<component type="console-application">
   <id>org.winehq.Wine</id>
   <metadata_license>FSFAP</metadata_license>
   <project_license>LGPL-2.1+</project_license>
