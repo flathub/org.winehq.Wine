@@ -7,6 +7,10 @@
   <name>Wine</name>
   <summary>Windows compatibility layer</summary>
 
+  <provides>
+    <binary>wine</binary>
+  </provides>
+
   <developer id="winehq.org">
     <name>Wine Project</name>
   </developer>
@@ -49,10 +53,6 @@
     </screenshot>
   </screenshots>
 
-  <provides>
-    <binary>wine</binary>
-  </provides>
-  
   <content_rating type="oars-1.1"/>
 
   <releases>
