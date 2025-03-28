@@ -206,7 +206,7 @@ modules:
       - install -Dm 644 krb5.conf -t /app/etc
     sources:
       - type: file
-        path: files/krb5.conf
+        path: krb5.conf
 
   - name: unixodbc
     sources: &unixodbc-sources
