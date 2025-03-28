@@ -202,8 +202,13 @@ modules:
   - name: unixodbc
     sources: &unixodbc-sources
       - type: archive
-        url: http://www.unixodbc.org/unixODBC-2.3.12.tar.gz
+        url: https://github.com/lurcher/unixODBC/releases/download/2.3.12/unixODBC-2.3.12.tar.gz
         sha256: f210501445ce21bf607ba51ef8c125e10e22dffdffec377646462df5f01915ec
+        x-checker-data:
+          type: anitya
+          project-id: 7344
+          stable-only: true
+          url-template: https://github.com/lurcher/unixODBC/releases/download/$version/unixODBC-$version.tar.gz
     cleanup: &unixodbc-cleanup
       - /bin
 
