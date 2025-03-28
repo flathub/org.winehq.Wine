@@ -24,7 +24,6 @@ finish-args:
   - --filesystem=xdg-music
   - --filesystem=xdg-videos
   - --filesystem=xdg-download
-  - --env=WINEDLLPATH=/app/dlls/lib32:/app/dlls/lib
   - --env=WINEPREFIX=/var/data/wine
   - --env=GST_PLUGIN_SYSTEM_PATH=/app/lib32/gstreamer-1.0:/app/lib/gstreamer-1.0:/usr/lib/i386-linux-gnu/gstreamer-1.0:/usr/lib/x86_64-linux-gnu/gstreamer-1.0
 command: wine
@@ -93,14 +92,6 @@ add-extensions:
   org.winehq.Wine.mono:
     directory: share/wine/mono
     bundle: true
-
-  org.winehq.Wine.DLLs:
-    directory: dlls
-    subdirectories: true
-    no-autodownload: true
-    merge-dirs: lib;lib32;
-    version: *app-version
-    versions: *extension-versions
 
 sdk-extensions:
   - org.freedesktop.Sdk.Compat.i386
@@ -259,9 +250,6 @@ modules:
           version-pattern: Wine version (\d[\d\w\.-]+\d)
           url-template: https://dl.winehq.org/wine/source/$major.$minor/wine-$version.tar.xz
           is-main-source: true
-      - type: patch
-        paths:
-          - patches/wine/loader-prefer-winedllpath.patch
 
   # 32-bit compatibility build
 
@@ -421,7 +409,6 @@ modules:
     build-commands:
       - install -Dm644 -t ${FLATPAK_DEST}/etc ld.so.conf
       - mkdir -p ${FLATPAK_DEST}/{,lib/debug/}lib/i386-linux-gnu/GL
-      - mkdir -p ${FLATPAK_DEST}/dlls
       - install -Dm644 ${FLATPAK_ID}.appdata.xml -t ${FLATPAK_DEST}/share/appdata
       - |
         icondir=${FLATPAK_DEST}/share/icons/hicolor
