@@ -307,6 +307,11 @@ modules:
           - type: archive
             url: https://github.com/p7zip-project/p7zip/archive/v17.06/p7zip-v17.06.tar.gz
             sha256: c35640020e8f044b425d9c18e1808ff9206dc7caf77c9720f57eb0849d714cd1
+            x-checker-data:
+              type: anitya
+              project-id: 2583
+              stable-only: true
+              url-template: https://github.com/p7zip-project/p7zip/archive/v$version/p7zip-v$version.tar.gz
 
       - name: cabextract
         sources:
