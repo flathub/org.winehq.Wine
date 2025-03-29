@@ -118,7 +118,6 @@ cleanup:
   - '*.la'
   - /share/doc
   - /share/man
-
   - /bin/function_grep.pl
   - /bin/widl
   - /bin/winecpp
@@ -167,7 +166,6 @@ modules:
       - /bin
       - /share/et
       - /share/examples
-      - /share/man
     sources: &krb5-sources
       - type: archive
         url: https://github.com/krb5/krb5/archive/refs/tags/krb5-1.21.3-final.tar.gz
