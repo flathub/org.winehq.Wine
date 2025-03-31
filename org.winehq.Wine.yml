@@ -142,12 +142,10 @@ modules:
         url: https://github.com/libusb/libusb/releases/download/v1.0.28/libusb-1.0.28.tar.bz2
         sha256: 966bb0d231f94a474eaae2e67da5ec844d3527a1f386456394ff432580634b29
         x-checker-data:
-          type: json
-          url: https://api.github.com/repos/libusb/libusb/releases/latest
-          tag-query: .tag_name
-          version-query: $tag | sub("^[vV]"; "")
-          timestamp-query: .published_at
-          url-query: .assets[] | select(.name=="libusb-\($version).tar.bz2") | .browser_download_url
+          type: anitya
+          project-id: 1749
+          stable-only: true
+          url-template: https://github.com/libusb/libusb/releases/download/v$version/libusb-$version.tar.bz2
 
   - name: libusb-32bit
     build-options:
