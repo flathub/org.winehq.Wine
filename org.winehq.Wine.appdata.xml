@@ -21,14 +21,14 @@
     <p>
       Wine (originally an acronym for "Wine Is Not an Emulator") is a compatibility
       layer capable of running Windows applications on several POSIX-compliant
-      operating systems, such as Linux, Mac OSX, &amp; BSD. Instead of simulating
+      operating systems, such as Linux, Mac OSX, and BSD. Instead of simulating
       internal Windows logic like a virtual machine or emulator, Wine translates
       Windows API calls into POSIX calls on-the-fly, eliminating the performance
       and memory penalties of other methods and allowing you to cleanly integrate
       Windows applications into your desktop.
     </p>
     <p>This Flatpak also provides Winetricks. To use it, run:</p>
-    <p>flatpak run --command=winetricks org.winehq.Wine</p>
+    <p><code>flatpak run --command=winetricks org.winehq.Wine</code></p>
   </description>
 
   <url type="homepage">https://www.winehq.org/</url>
