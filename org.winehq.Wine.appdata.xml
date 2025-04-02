@@ -11,6 +11,8 @@
     <binary>wine</binary>
   </provides>
 
+  <icon type="stock">org.winehq.Wine</icon>
+  
   <developer id="winehq.org">
     <name>Wine Project</name>
   </developer>
@@ -25,6 +27,9 @@
       and memory penalties of other methods and allowing you to cleanly integrate
       Windows applications into your desktop.
     </p>
+    <p>
+      This Flatpak also provides Winetricks. To use it, run: flatpak run --command=winetricks org.winehq.Wine
+    </p>
   </description>
 
   <url type="homepage">https://www.winehq.org/</url>
@@ -36,11 +41,11 @@
 
   <screenshots>
     <screenshot type="default">
-      <caption>MS Outlook 2010 running via wine</caption>
-      <image>https://dl.winehq.org/share/images/screenshots/outlook2010.jpg</image>
+      <caption>Matlab running via wine</caption>
+      <image>https://dl.winehq.org/share/images/screenshots/matlab.jpg</image>
     </screenshot>
     <screenshot>
-      <caption>The Windows Steam client running on linux via wine</caption>
+      <caption>The Windows Steam client running via wine</caption>
       <image>https://dl.winehq.org/share/images/screenshots/steam.jpg</image>
     </screenshot>
     <screenshot>
