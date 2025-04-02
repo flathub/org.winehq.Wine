@@ -28,7 +28,10 @@
       Windows applications into your desktop.
     </p>
     <p>
-      This Flatpak also provides Winetricks. To use it, run: flatpak run --command=winetricks org.winehq.Wine
+      This Flatpak also provides Winetricks. To use it, run:
+    </p>
+    <p>
+      flatpak run --command=winetricks org.winehq.Wine
     </p>
   </description>
 
