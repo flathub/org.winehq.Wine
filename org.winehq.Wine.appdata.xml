@@ -27,12 +27,8 @@
       and memory penalties of other methods and allowing you to cleanly integrate
       Windows applications into your desktop.
     </p>
-    <p>
-      This Flatpak also provides Winetricks. To use it, run:
-    </p>
-    <p>
-      flatpak run --command=winetricks org.winehq.Wine
-    </p>
+    <p>This Flatpak also provides Winetricks. To use it, run:</p>
+    <p>flatpak run --command=winetricks org.winehq.Wine</p>
   </description>
 
   <url type="homepage">https://www.winehq.org/</url>
