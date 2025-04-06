@@ -128,7 +128,6 @@ modules:
     build-options:
       append-path: /usr/lib/sdk/mingw-w64/bin
     config-opts:
-      - --prefix=/app
       - --libdir=/app/lib
       - --enable-archs=i386,x86_64
       - --enable-win64
