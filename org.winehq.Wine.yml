@@ -1,12 +1,8 @@
 id: org.winehq.Wine
-default-branch: &app-version stable-24.08
-x-extension-versions: &extension-versions stable;stable-24.08
+default-branch: stable-24.08
 sdk: org.freedesktop.Sdk
 runtime: org.freedesktop.Platform
-runtime-version: &runtime-version '24.08'
-x-gl-version: &gl-version '1.4'
-x-gl-versions: &gl-versions 24.08;1.4
-x-gl-merge-dirs: &gl-merge-dirs vulkan/icd.d;glvnd/egl_vendor.d;egl/egl_external_platform.d;OpenCL/vendors;lib/dri;lib/d3d;lib/gbm;vulkan/explicit_layer.d;vulkan/implicit_layer.d
+runtime-version: '24.08'
 finish-args:
   - --share=ipc
   - --socket=x11
@@ -14,7 +10,6 @@ finish-args:
   - --device=all
   - --socket=pulseaudio
   - --share=network
-  - --allow=multiarch
   - --allow=devel
   - --system-talk-name=org.freedesktop.UDisks2
   - --system-talk-name=org.freedesktop.NetworkManager
@@ -25,62 +20,13 @@ finish-args:
   - --filesystem=xdg-videos
   - --filesystem=xdg-download
   - --env=WINEPREFIX=/var/data/wine
-  - --env=GST_PLUGIN_SYSTEM_PATH=/app/lib32/gstreamer-1.0:/app/lib/gstreamer-1.0:/usr/lib/i386-linux-gnu/gstreamer-1.0:/usr/lib/x86_64-linux-gnu/gstreamer-1.0
 command: wine
 rename-desktop-file: wine.desktop
 rename-icon: wine
 
 add-extensions:
-  org.freedesktop.Platform.Compat.i386:
-    directory: lib/i386-linux-gnu
-    version: *runtime-version
-
-  org.freedesktop.Platform.Compat.i386.Debug:
-    directory: lib/debug/lib/i386-linux-gnu
-    version: *runtime-version
-    no-autodownload: true
-
-  org.freedesktop.Platform.GL32:
-    directory: lib/i386-linux-gnu/GL
-    version: *gl-version
-    versions: *gl-versions
-    subdirectories: true
-    no-autodownload: true
-    autodelete: false
-    add-ld-path: lib
-    merge-dirs: *gl-merge-dirs
-    download-if: active-gl-driver
-    enable-if: active-gl-driver
-    autoprune-unless: active-gl-driver
-
-  org.freedesktop.Platform.GL32.Debug:
-    directory: lib/debug/lib/i386-linux-gnu/GL
-    version: *gl-version
-    versions: *gl-versions
-    subdirectories: true
-    no-autodownload: true
-    merge-dirs: *gl-merge-dirs
-    enable-if: active-gl-driver
-    autoprune-unless: active-gl-driver
-
-  org.freedesktop.Platform.VAAPI.Intel.i386:
-    directory: lib/i386-linux-gnu/dri/intel-vaapi-driver
-    version: *runtime-version
-    versions: *runtime-version
-    autodelete: false
-    no-autodownload: true
-    add-ld-path: lib
-    download-if: have-intel-gpu
-    autoprune-unless: have-intel-gpu
-
   org.freedesktop.Platform.ffmpeg-full:
     directory: lib/ffmpeg
-    add-ld-path: .
-    version: *runtime-version
-    autodelete: false
-
-  org.freedesktop.Platform.ffmpeg_full.i386:
-    directory: lib32/ffmpeg
     add-ld-path: .
     version: *runtime-version
     autodelete: false
@@ -94,23 +40,10 @@ add-extensions:
     bundle: true
 
 sdk-extensions:
-  - org.freedesktop.Sdk.Compat.i386
-  - org.freedesktop.Sdk.Extension.toolchain-i386
   - org.freedesktop.Sdk.Extension.mingw-w64
 
 build-options:
   append-path: /usr/lib/sdk/mingw-w64/bin
-
-x-compat-i386-opts: &compat_i386_opts
-  prepend-pkg-config-path: /app/lib32/pkgconfig:/usr/lib/i386-linux-gnu/pkgconfig
-  # Some autotools-based builds will fail if -L/app/lib32 isn't first
-  ldflags: -L/app/lib32 -Wl,-rpath-link=/app/lib32 -Wl,-z,relro,-z,now -Wl,--as-needed
-  ldflags-override: true
-  append-path: /usr/lib/sdk/toolchain-i386/bin
-  env:
-    CC: ccache i686-unknown-linux-gnu-gcc
-    CXX: ccache i686-unknown-linux-gnu-g++
-  libdir: /app/lib32
 
 separate-locales: false
 cleanup:
@@ -129,15 +62,14 @@ cleanup:
   - /bin/wrc
   - /include
   - /lib/wine/*.def
-  - /lib32/wine/*.def
 cleanup-commands:
-  - mkdir -p ${FLATPAK_DEST}/lib{,32}/ffmpeg
+  - mkdir -p ${FLATPAK_DEST}/lib/ffmpeg
 modules:
 
-  # Multilib deps
+  # Wine dependencies
 
   - name: libusb
-    sources: &libusb-sources
+    sources:
       - type: archive
         url: https://github.com/libusb/libusb/releases/download/v1.0.28/libusb-1.0.28.tar.bz2
         sha256: 966bb0d231f94a474eaae2e67da5ec844d3527a1f386456394ff432580634b29
@@ -147,24 +79,18 @@ modules:
           stable-only: true
           url-template: https://github.com/libusb/libusb/releases/download/v$version/libusb-$version.tar.bz2
 
-  - name: libusb-32bit
-    build-options:
-      arch:
-        x86_64: *compat_i386_opts
-    sources: *libusb-sources
-
   - name: krb5
     subdir: src
-    config-opts: &krb5-config-opts
+    config-opts:
       - --localstatedir=/var/lib
       - --sbindir=${FLATPAK_DEST}/bin
       - --disable-static
       - --disable-rpath
-    cleanup: &krb5-cleanup
+    cleanup:
       - /bin
       - /share/et
       - /share/examples
-    sources: &krb5-sources
+    sources:
       - type: archive
         url: https://github.com/krb5/krb5/archive/refs/tags/krb5-1.21.3-final.tar.gz
         sha256: 2157d92020d408ed63ebcd886a92d1346a1383b0f91123a0473b4f69b4a24861
@@ -178,15 +104,6 @@ modules:
         commands:
           - autoreconf -si
 
-  - name: krb5-32bit
-    subdir: src
-    build-options:
-      arch:
-        x86_64: *compat_i386_opts
-    config-opts: *krb5-config-opts
-    sources: *krb5-sources
-    cleanup: *krb5-cleanup
-
   - name: krb5-config
     buildsystem: simple
     build-commands:
@@ -196,7 +113,7 @@ modules:
         path: krb5.conf
 
   - name: unixodbc
-    sources: &unixodbc-sources
+    sources:
       - type: archive
         url: https://github.com/lurcher/unixODBC/releases/download/2.3.12/unixODBC-2.3.12.tar.gz
         sha256: f210501445ce21bf607ba51ef8c125e10e22dffdffec377646462df5f01915ec
@@ -205,41 +122,30 @@ modules:
           project-id: 7344
           stable-only: true
           url-template: https://github.com/lurcher/unixODBC/releases/download/$version/unixODBC-$version.tar.gz
-    cleanup: &unixodbc-cleanup
+    cleanup:
       - /bin
 
-  - name: unixodbc-32bit
-    build-options:
-      arch:
-        x86_64: *compat_i386_opts
-    sources: *unixodbc-sources
-    cleanup: *unixodbc-cleanup
-
-  # Native arch build
+  # Wine WOW64 build
 
   - name: wine
     build-options:
-      arch:
-        x86_64:
-          config-opts:
-            - --enable-win64
-            - --with-mingw=ccache x86_64-w64-mingw32-gcc
-          libdir: /app/lib
+      libdir: /app/lib
       env:
         LIBDIR: lib
-    config-opts: &wine-config-opts
-      - --disable-win16
+    config-opts:
+      - --enable-archs=i386,x86_64
+      - --enable-win64
       - --disable-tests
       - --with-x
       - --with-wayland
       - --with-pulse
       - --with-dbus
       - --without-oss
-    make-install-args: &wine-make-install-args
+    make-install-args:
       - LDCONFIG=/bin/true
       - UPDATE_DESKTOP_DATABASE=/bin/true
       - INSTALL_PROGRAM_FLAGS=-s
-    sources: &wine-sources
+    sources:
       - type: archive
         url: https://dl.winehq.org/wine/source/10.0/wine-10.0.tar.xz
         sha256: c5e0b3f5f7efafb30e9cd4d9c624b85c583171d33549d933cd3402f341ac3601
@@ -251,27 +157,6 @@ modules:
           version-pattern: Wine version (\d[\d\w\.-]+\d)
           url-template: https://dl.winehq.org/wine/source/$major.$minor/wine-$version.tar.xz
           is-main-source: true
-
-  # 32-bit compatibility build
-
-  - name: wine-32bit
-    only-arches:
-      - x86_64
-    build-options:
-      arch:
-        x86_64: *compat_i386_opts
-      config-opts:
-        - --bindir=${FLATPAK_DEST}/bin32
-        - --with-mingw=ccache i686-w64-mingw32-gcc
-      env:
-        LIBDIR: lib32
-    config-opts: *wine-config-opts
-    make-install-args: *wine-make-install-args
-    post-install:
-      - mv ${FLATPAK_DEST}/bin32/wine{,-preloader} ${FLATPAK_DEST}/bin/
-    sources: *wine-sources
-    cleanup:
-      - /bin32
 
   # Tools
 
@@ -339,9 +224,6 @@ modules:
         ${FLATPAK_ID}.gecko.metainfo.xml
     sources:
       - type: archive
-        only-arches:
-          - i386
-          - x86_64
         url: https://dl.winehq.org/wine/wine-gecko/2.47.4/wine-gecko-2.47.4-x86.tar.xz
         strip-components: 0
         sha256: 2cfc8d5c948602e21eff8a78613e1826f2d033df9672cace87fed56e8310afb6
@@ -352,8 +234,6 @@ modules:
             GECKO_VERSION\s+"(\d[\d\.]+\d)"
           url-template: https://dl.winehq.org/wine/wine-gecko/$version/wine-gecko-$version-x86.tar.xz
       - type: archive
-        only-arches:
-          - x86_64
         url: https://dl.winehq.org/wine/wine-gecko/2.47.4/wine-gecko-2.47.4-x86_64.tar.xz
         strip-components: 0
         sha256: fd88fc7e537d058d7a8abf0c1ebc90c574892a466de86706a26d254710a82814
@@ -393,8 +273,6 @@ modules:
   - name: bundle-setup
     buildsystem: simple
     build-commands:
-      - install -Dm644 -t ${FLATPAK_DEST}/etc ld.so.conf
-      - mkdir -p ${FLATPAK_DEST}/{,lib/debug/}lib/i386-linux-gnu/GL
       - install -Dm644 ${FLATPAK_ID}.appdata.xml -t ${FLATPAK_DEST}/share/appdata
       - |
         icondir=${FLATPAK_DEST}/share/icons/hicolor
@@ -404,8 +282,6 @@ modules:
           rsvg-convert -h ${s} -a -o ${icondir}/${s}x${s}/apps/wine.png ${icondir}/scalable/apps/wine.svg
         done
     sources:
-      - type: file
-        path: ld.so.conf
       - type: file
         path: wine-logo.svg
       - type: file
