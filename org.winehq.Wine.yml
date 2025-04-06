@@ -2,7 +2,7 @@ id: org.winehq.Wine
 default-branch: stable-24.08
 sdk: org.freedesktop.Sdk
 runtime: org.freedesktop.Platform
-runtime-version: '24.08'
+runtime-version: &runtime-version '24.08'
 finish-args:
   - --share=ipc
   - --socket=x11
