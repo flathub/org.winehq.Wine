@@ -42,9 +42,6 @@ add-extensions:
 sdk-extensions:
   - org.freedesktop.Sdk.Extension.mingw-w64
 
-build-options:
-  append-path: /usr/lib/sdk/mingw-w64/bin
-
 separate-locales: false
 cleanup:
   - '*.a'
@@ -129,10 +126,10 @@ modules:
 
   - name: wine
     build-options:
-      libdir: /app/lib
-      env:
-        LIBDIR: lib
+      append-path: /usr/lib/sdk/mingw-w64/bin
     config-opts:
+      - --prefix=/app
+      - --libdir=/app/lib
       - --enable-archs=i386,x86_64
       - --enable-win64
       - --disable-tests
