@@ -130,7 +130,6 @@ modules:
     config-opts:
       - --libdir=/app/lib
       - --enable-archs=i386,x86_64
-      - --enable-win64
       - --disable-tests
       - --with-x
       - --with-wayland
