@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <component type="addon">
-  <id>org.winehq.Wine.gecko</id>  
+  <id>org.winehq.Wine.gecko-wow64</id>  
   <extends>org.winehq.Wine</extends>
   <name>Gecko</name>
   <summary>Web engine for Wine based on Mozilla Gecko</summary>
