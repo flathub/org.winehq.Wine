@@ -348,8 +348,7 @@ modules:
         x-checker-data:
           type: html
           url: *wine-addons-url
-          version-pattern: &wine-gecko-version-pattern >-
-            GECKO_VERSION\s+"(\d[\d\.]+\d)"
+          version-pattern: GECKO_VERSION\s+"(\d[\d\.]+\d)"
           url-template: https://dl.winehq.org/wine/wine-gecko/$version/wine-gecko-$version-x86.tar.xz
       - type: archive
         only-arches:
@@ -360,7 +359,7 @@ modules:
         x-checker-data:
           type: html
           url: *wine-addons-url
-          version-pattern: *wine-gecko-version-pattern
+          version-pattern: GECKO_VERSION\s+"(\d[\d\.]+\d)"
           url-template: https://dl.winehq.org/wine/wine-gecko/$version/wine-gecko-$version-x86_64.tar.xz
       - type: file
         path: org.winehq.Wine.gecko.metainfo.xml
