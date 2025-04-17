@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <component type="addon">
-  <id>org.winehq.Wine.mono</id>  
+  <id>org.winehq.Wine.mono-wow64</id>  
   <extends>org.winehq.Wine</extends>
   <name>Mono</name>
   <summary>.NET Framework implementation for Wine based on Mono</summary>
