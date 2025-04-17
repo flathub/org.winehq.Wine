@@ -32,11 +32,11 @@ add-extensions:
     version: *runtime-version
     autodelete: false
 
-  org.winehq.Wine.gecko:
+  org.winehq.Wine.gecko-wow64:
     directory: share/wine/gecko
     bundle: true
 
-  org.winehq.Wine.mono:
+  org.winehq.Wine.mono-wow64:
     directory: share/wine/mono
     bundle: true
 
@@ -217,7 +217,7 @@ modules:
       - >-
         install -Dm644
         -t ${FLATPAK_DEST}/share/wine/gecko/share/metainfo/
-        ${FLATPAK_ID}.gecko.metainfo.xml
+        ${FLATPAK_ID}.gecko-wow64.metainfo.xml
     sources:
       - type: archive
         url: https://dl.winehq.org/wine/wine-gecko/2.47.4/wine-gecko-2.47.4-x86.tar.xz
@@ -238,7 +238,7 @@ modules:
           version-pattern: GECKO_VERSION\s+"(\d[\d\.]+\d)"
           url-template: https://dl.winehq.org/wine/wine-gecko/$version/wine-gecko-$version-x86_64.tar.xz
       - type: file
-        path: org.winehq.Wine.gecko.metainfo.xml
+        path: org.winehq.Wine.gecko-wow64.metainfo.xml
 
   - name: wine-mono
     buildsystem: simple
@@ -249,7 +249,7 @@ modules:
       - >-
         install -Dm644
         -t ${FLATPAK_DEST}/share/wine/mono/share/metainfo/
-        ${FLATPAK_ID}.mono.metainfo.xml
+        ${FLATPAK_ID}.mono-wow64.metainfo.xml
     sources:
       - type: archive
         url: https://dl.winehq.org/wine/wine-mono/9.4.0/wine-mono-9.4.0-x86.tar.xz
@@ -261,7 +261,7 @@ modules:
           version-pattern: MONO_VERSION\s+"(\d[\d\.]+\d)"
           url-template: https://dl.winehq.org/wine/wine-mono/$version/wine-mono-$version-x86.tar.xz
       - type: file
-        path: org.winehq.Wine.mono.metainfo.xml
+        path: org.winehq.Wine.mono-wow64.metainfo.xml
 
   # Flatpak bundle
 
