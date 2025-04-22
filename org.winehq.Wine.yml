@@ -120,6 +120,7 @@ cleanup:
   - /share/man
   - /bin/function_grep.pl
   - /bin/widl
+  - /bin/winebuild
   - /bin/winecpp
   - /bin/winedump
   - /bin/wineg++
@@ -128,6 +129,8 @@ cleanup:
   - /bin/wmc
   - /bin/wrc
   - /include
+  - /lib/pkgconfig
+  - /lib32/pkgconfig
   - /lib/wine/*.def
   - /lib32/wine/*.def
 cleanup-commands:
@@ -228,7 +231,6 @@ modules:
       env:
         LIBDIR: lib
     config-opts: &wine-config-opts
-      - --disable-win16
       - --disable-tests
       - --with-x
       - --with-wayland
