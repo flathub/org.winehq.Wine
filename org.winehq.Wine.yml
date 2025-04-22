@@ -51,6 +51,7 @@ cleanup:
   - /share/man
   - /bin/function_grep.pl
   - /bin/widl
+  - /bin/winebuild
   - /bin/winecpp
   - /bin/winedump
   - /bin/wineg++
@@ -59,6 +60,7 @@ cleanup:
   - /bin/wmc
   - /bin/wrc
   - /include
+  - /lib/pkgconfig
   - /lib/wine/*.def
 cleanup-commands:
   - mkdir -p ${FLATPAK_DEST}/lib/ffmpeg
