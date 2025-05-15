@@ -174,28 +174,22 @@ modules:
           tag-pattern: ^(\d+)$
     modules:
 
-      - name: p7zip
-        no-autogen: true
-        make-args:
-          - all2
-          - DEST_HOME=/app
-          - DEST_BIN=/app/bin
-          - DEST_SHARE=/app/lib/p7zip
-          - DEST_MAN=/app/share/man
-        make-install-args:
-          - DEST_HOME=/app
-          - DEST_BIN=/app/bin
-          - DEST_SHARE=/app/lib/p7zip
-          - DEST_MAN=/app/share/man
+      - name: 7zip
+        buildsystem: simple
+        subdir: CPP/7zip/Bundles/Alone2
+        build-commands:
+          - make -j -f makefile.gcc
+          - install -D ./_o/7zz -t /app/bin
+          - ln -s /app/bin/7zz /app/bin/7za
+          - ln -s /app/bin/7zz /app/bin/7z
         sources:
-          - type: archive
-            url: https://github.com/p7zip-project/p7zip/archive/v17.06/p7zip-v17.06.tar.gz
-            sha256: c35640020e8f044b425d9c18e1808ff9206dc7caf77c9720f57eb0849d714cd1
+          - type: git
+            url: https://github.com/ip7z/7zip.git
+            tag: 24.09
+            strip-components: 0
             x-checker-data:
-              type: anitya
-              project-id: 2583
-              stable-only: true
-              url-template: https://github.com/p7zip-project/p7zip/archive/v$version/p7zip-v$version.tar.gz
+              type: git
+              tag-pattern: ^v([\\d.]+)$
 
       - name: cabextract
         sources:
