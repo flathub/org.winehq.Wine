@@ -1,5 +1,4 @@
 id: org.winehq.Wine
-default-branch: stable-24.08
 sdk: org.freedesktop.Sdk
 runtime: org.freedesktop.Platform
 runtime-version: &runtime-version '24.08'
@@ -167,8 +166,7 @@ modules:
     sources:
       - type: git
         url: https://github.com/Winetricks/winetricks.git
-        tag: '20250102'
-        commit: e20b2f6f80d175f96208f51800130db7459dd28c
+        tag: 20250102
         x-checker-data:
           type: git
           tag-pattern: ^(\d+)$
