@@ -286,7 +286,7 @@ modules:
     sources:
       - type: git
         url: https://github.com/Winetricks/winetricks.git
-        tag: 20250102
+        tag: '20250102'
         commit: e20b2f6f80d175f96208f51800130db7459dd28c
         x-checker-data:
           type: git
@@ -297,7 +297,7 @@ modules:
         buildsystem: simple
         subdir: CPP/7zip/Bundles/Alone2
         build-commands:
-          - make -j -f makefile.gcc
+          - make -j $FLATPAK_BUILDER_N_JOBS -f makefile.gcc
           - install -D ./_o/7zz -t /app/bin
           - ln -s /app/bin/7zz /app/bin/7za
           - ln -s /app/bin/7zz /app/bin/7z
