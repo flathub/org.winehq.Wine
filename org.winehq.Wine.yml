@@ -137,7 +137,7 @@ cleanup-commands:
   - mkdir -p ${FLATPAK_DEST}/lib{,32}/ffmpeg
 modules:
 
-  # Multilib deps
+  # Wine dependencies
 
   - name: libusb
     sources: &libusb-sources
@@ -217,6 +217,20 @@ modules:
         x86_64: *compat_i386_opts
     sources: *unixodbc-sources
     cleanup: *unixodbc-cleanup
+
+  - name: opencl-headers
+    buildsystem: simple
+    build-commands:
+      - cp -a CL $FLATPAK_DEST/include/
+    sources:
+      - type: archive
+        url: https://github.com/KhronosGroup/OpenCL-Headers/archive/refs/tags/v2024.10.24.tar.gz
+        sha256: 159f2a550592bae49859fee83d372acd152328fdf95c0dcd8b9409f8fad5db93
+        x-checker-data:
+          type: anitya
+          project-id: 223257
+          stable-only: true
+          url-template: https://github.com/KhronosGroup/OpenCL-Headers/archive/refs/tags/v$version.tar.gz
 
   # Native arch build
 
