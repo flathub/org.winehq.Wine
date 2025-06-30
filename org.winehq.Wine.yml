@@ -293,10 +293,6 @@ modules:
 
   - name: winetricks
     no-autogen: true
-    make-args:
-      - PREFIX=/app
-    make-install-args:
-      - PREFIX=/app
     sources:
       - type: git
         url: https://github.com/Winetricks/winetricks.git
@@ -349,9 +345,6 @@ modules:
         ${FLATPAK_ID}.gecko.metainfo.xml
     sources:
       - type: archive
-        only-arches:
-          - i386
-          - x86_64
         url: https://dl.winehq.org/wine/wine-gecko/2.47.4/wine-gecko-2.47.4-x86.tar.xz
         strip-components: 0
         sha256: 2cfc8d5c948602e21eff8a78613e1826f2d033df9672cace87fed56e8310afb6
@@ -361,8 +354,6 @@ modules:
           version-pattern: GECKO_VERSION\s+"(\d[\d\.]+\d)"
           url-template: https://dl.winehq.org/wine/wine-gecko/$version/wine-gecko-$version-x86.tar.xz
       - type: archive
-        only-arches:
-          - x86_64
         url: https://dl.winehq.org/wine/wine-gecko/2.47.4/wine-gecko-2.47.4-x86_64.tar.xz
         strip-components: 0
         sha256: fd88fc7e537d058d7a8abf0c1ebc90c574892a466de86706a26d254710a82814
