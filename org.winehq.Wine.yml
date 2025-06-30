@@ -293,6 +293,8 @@ modules:
 
   - name: winetricks
     no-autogen: true
+    make-install-args:
+      - PREFIX=/app
     sources:
       - type: git
         url: https://github.com/Winetricks/winetricks.git
