@@ -196,8 +196,8 @@ modules:
         sources:
           - type: git
             url: https://github.com/ip7z/7zip.git
-            tag: '24.09'
-            commit: e5431fa6f5505e385c6f9367260717e9c47dc2ee
+            tag: '25.00'
+            commit: 395149956d696e6e3099d8b76d797437f94a6942
             x-checker-data:
               type: git
               tag-pattern: ^([\d.]+)$
