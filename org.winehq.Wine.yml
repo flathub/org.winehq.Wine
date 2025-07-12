@@ -277,6 +277,7 @@ modules:
       - --without-ldap
       - --without-acl-support
       - --without-systemd
+      - --without-ldb-lmdb
     cleanup:
       - /bin
     sources:
