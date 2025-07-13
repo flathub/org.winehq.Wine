@@ -42,6 +42,12 @@ add-extensions:
 sdk-extensions:
   - org.freedesktop.Sdk.Extension.mingw-w64
 
+build-options:
+  append-path: /usr/lib/sdk/mingw-w64/bin
+  env:
+    PERL5LIB: /app/lib/perl5/
+    PERL_MM_OPT: INSTALL_BASE=/app
+
 separate-locales: false
 cleanup:
   - '*.a'
@@ -83,12 +89,9 @@ modules:
     config-opts:
       - --localstatedir=/var/lib
       - --sbindir=${FLATPAK_DEST}/bin
-      - --disable-static
       - --disable-rpath
     cleanup:
       - /bin
-      - /share/et
-      - /share/examples
     sources:
       - type: archive
         url: https://github.com/krb5/krb5/archive/refs/tags/krb5-1.21.3-final.tar.gz
@@ -106,12 +109,14 @@ modules:
   - name: krb5-config
     buildsystem: simple
     build-commands:
-      - install -Dm 644 krb5.conf -t /app/etc
+      - install -Dm644 krb5.conf -t /app/etc
     sources:
       - type: file
         path: krb5.conf
 
   - name: unixodbc
+    cleanup:
+      - /bin
     sources:
       - type: archive
         url: https://github.com/lurcher/unixODBC/releases/download/2.3.12/unixODBC-2.3.12.tar.gz
@@ -121,8 +126,6 @@ modules:
           project-id: 7344
           stable-only: true
           url-template: https://github.com/lurcher/unixODBC/releases/download/$version/unixODBC-$version.tar.gz
-    cleanup:
-      - /bin
 
   - name: opencl-headers
     buildsystem: simple
@@ -138,11 +141,68 @@ modules:
           stable-only: true
           url-template: https://github.com/KhronosGroup/OpenCL-Headers/archive/refs/tags/v$version.tar.gz
 
+  # Samba + dependencies
+
+  - name: parse-yapp
+    buildsystem: simple
+    build-commands:
+      - perl Makefile.PL
+      - make install
+    cleanup:
+      - '*'
+    sources:
+      - type: archive
+        url: https://cpan.metacpan.org/authors/id/W/WB/WBRASWELL/Parse-Yapp-1.21.tar.gz
+        sha256: 3810e998308fba2e0f4f26043035032b027ce51ce5c8a52a8b8e340ca65f13e5
+        x-checker-data:
+          type: anitya
+          project-id: 3197
+          stable-only: true
+          url-template: https://cpan.metacpan.org/authors/id/W/WB/WBRASWELL/Parse-Yapp-$version.tar.gz
+
+  - name: rpcsvc-proto
+    cleanup:
+      - '*'
+    sources:
+      - type: archive
+        url: https://github.com/thkukuk/rpcsvc-proto/releases/download/v1.4.4/rpcsvc-proto-1.4.4.tar.xz
+        sha256: 81c3aa27edb5d8a18ef027081ebb984234d5b5860c65bd99d4ac8f03145a558b
+        x-checker-data:
+          type: anitya
+          project-id: 155452
+          stable-only: true
+          url-template: https://github.com/thkukuk/rpcsvc-proto/releases/download/v$version/rpcsvc-proto-$version.tar.xz
+
+  - name: samba
+    config-opts:
+      - --localstatedir=/var
+      - --sharedstatedir=/var/lib
+      - --sbindir=/app/bin
+      - --enable-fhs
+      - --disable-python
+      - --without-json
+      - --without-ad-dc
+      - --without-ads
+      - --without-pam
+      - --without-ldap
+      - --without-acl-support
+      - --without-systemd
+      - --without-ldb-lmdb
+    cleanup:
+      - /bin
+    sources:
+      - type: archive
+        url: https://samba.org/samba/ftp/stable/samba-4.22.3.tar.gz
+        sha256: 8fd7092629a3596d935cd7567d934979f94272918ec3affd0cc807934ecf22ba
+        x-checker-data:
+          type: anitya
+          project-id: 4758
+          stable-only: true
+          url-template: https://samba.org/samba/ftp/stable/samba-$version.tar.gz
+
   # Wine WOW64 build
 
   - name: wine
-    build-options:
-      append-path: /usr/lib/sdk/mingw-w64/bin
     config-opts:
       - --libdir=/app/lib
       - --enable-archs=i386,x86_64
@@ -279,7 +339,7 @@ modules:
       - |
         icondir=${FLATPAK_DEST}/share/icons/hicolor
         install -Dm644 wine-logo.svg ${icondir}/scalable/apps/wine.svg
-        for s in 64 128 256; do
+        for s in 16 24 32 48 64 128 256; do
           mkdir -p ${icondir}/${s}x${s}/apps
           rsvg-convert -h ${s} -a -o ${icondir}/${s}x${s}/apps/wine.png ${icondir}/scalable/apps/wine.svg
         done
