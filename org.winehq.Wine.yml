@@ -264,7 +264,7 @@ modules:
           url-template: https://github.com/thkukuk/rpcsvc-proto/releases/download/v$version/rpcsvc-proto-$version.tar.xz
 
   - name: samba
-    config-opts:
+    config-opts: &samba-config-opts
       - --localstatedir=/var
       - --sharedstatedir=/var/lib
       - --sbindir=/app/bin
@@ -280,7 +280,7 @@ modules:
       - --without-ldb-lmdb
     cleanup:
       - /bin
-    sources:
+    sources: &samba-sources
       - type: archive
         url: https://samba.org/samba/ftp/stable/samba-4.22.3.tar.gz
         sha256: 8fd7092629a3596d935cd7567d934979f94272918ec3affd0cc807934ecf22ba
