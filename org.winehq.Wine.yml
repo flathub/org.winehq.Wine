@@ -239,7 +239,7 @@ modules:
       - perl Makefile.PL
       - make install
     cleanup:
-      - "*"
+      - '*'
     sources:
       - type: archive
         url: https://cpan.metacpan.org/authors/id/W/WB/WBRASWELL/Parse-Yapp-1.21.tar.gz
@@ -289,6 +289,17 @@ modules:
           project-id: 4758
           stable-only: true
           url-template: https://samba.org/samba/ftp/stable/samba-$version.tar.gz
+
+  - name: samba-32bit
+      build-options:
+        arch:
+          x86_64: *compat_i386_opts
+        config-opts:
+          - --sbindir=bin32
+      config-opts: *samba-config-opts
+      cleanup:
+        - /bin32
+      sources: *samba-sources
 
   # Native arch build
 
@@ -459,7 +470,7 @@ modules:
       - |
         icondir=${FLATPAK_DEST}/share/icons/hicolor
         install -Dm644 wine-logo.svg ${icondir}/scalable/apps/wine.svg
-        for s in 16 32 48 64 128 256; do
+        for s in 16 24 32 48 64 128 256; do
           mkdir -p ${icondir}/${s}x${s}/apps
           rsvg-convert -h ${s} -a -o ${icondir}/${s}x${s}/apps/wine.png ${icondir}/scalable/apps/wine.svg
         done
