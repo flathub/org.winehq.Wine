@@ -119,6 +119,8 @@ cleanup:
   - '*.a'
   - '*.la'
   - /share/doc
+  - /share/et
+  - /share/examples
   - /share/man
   - /bin/function_grep.pl
   - /bin/widl
@@ -264,6 +266,9 @@ modules:
           url-template: https://github.com/thkukuk/rpcsvc-proto/releases/download/v$version/rpcsvc-proto-$version.tar.xz
 
   - name: samba
+    build-options:
+      config-opts:
+        - --libexecdir=lib/libexec
     config-opts: &samba-config-opts
       - --localstatedir=/var
       - --sharedstatedir=/var/lib
@@ -296,6 +301,7 @@ modules:
         x86_64: *compat_i386_opts
       config-opts:
         - --sbindir=bin32
+        - --libexecdir=lib32/libexec
     config-opts: *samba-config-opts
     cleanup:
       - /bin32
