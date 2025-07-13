@@ -291,15 +291,15 @@ modules:
           url-template: https://samba.org/samba/ftp/stable/samba-$version.tar.gz
 
   - name: samba-32bit
-      build-options:
-        arch:
-          x86_64: *compat_i386_opts
-        config-opts:
-          - --sbindir=bin32
-      config-opts: *samba-config-opts
-      cleanup:
-        - /bin32
-      sources: *samba-sources
+    build-options:
+      arch:
+        x86_64: *compat_i386_opts
+      config-opts:
+        - --sbindir=bin32
+    config-opts: *samba-config-opts
+    cleanup:
+      - /bin32
+    sources: *samba-sources
 
   # Native arch build
 
