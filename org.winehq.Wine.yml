@@ -272,7 +272,6 @@ modules:
     config-opts: &samba-config-opts
       - --localstatedir=/var
       - --sharedstatedir=/var/lib
-      - --sbindir=/app/bin
       - --enable-fhs
       - --disable-python
       - --without-json
@@ -283,8 +282,6 @@ modules:
       - --without-acl-support
       - --without-systemd
       - --without-ldb-lmdb
-    cleanup:
-      - /bin
     sources: &samba-sources
       - type: archive
         url: https://samba.org/samba/ftp/stable/samba-4.22.3.tar.gz
@@ -300,11 +297,10 @@ modules:
       arch:
         x86_64: *compat_i386_opts
       config-opts:
-        - --sbindir=bin32
+        - --bindir=bin32
+        - --sbindir=sbin32
         - --libexecdir=lib32/libexec
     config-opts: *samba-config-opts
-    cleanup:
-      - /bin32
     sources: *samba-sources
 
   # Native arch build
