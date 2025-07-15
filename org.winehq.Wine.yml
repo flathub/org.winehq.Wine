@@ -185,8 +185,8 @@ modules:
       arch:
         x86_64: *compat_i386_opts
       config-opts:
-        - --bindir=bin32
-        - --sbindir=sbin32
+        - --bindir=${FLATPAK_DEST}/bin32
+        - --sbindir=${FLATPAK_DEST}/sbin32
     config-opts: *krb5-config-opts
     sources: *krb5-sources
 
@@ -214,8 +214,8 @@ modules:
       arch:
         x86_64: *compat_i386_opts
       config-opts:
-        - --bindir=bin32
-        - --sbindir=sbin32
+        - --bindir=${FLATPAK_DEST}/bin32
+        - --sbindir=${FLATPAK_DEST}/sbin32
     sources: *unixodbc-sources
 
   - name: opencl-headers
