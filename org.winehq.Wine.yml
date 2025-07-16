@@ -53,6 +53,8 @@ cleanup:
   - '*.a'
   - '*.la'
   - /share/doc
+  - /share/et
+  - /share/examples
   - /share/man
   - /bin/function_grep.pl
   - /bin/widl
@@ -88,10 +90,7 @@ modules:
     subdir: src
     config-opts:
       - --localstatedir=/var/lib
-      - --sbindir=${FLATPAK_DEST}/bin
       - --disable-rpath
-    cleanup:
-      - /bin
     sources:
       - type: archive
         url: https://github.com/krb5/krb5/archive/refs/tags/krb5-1.21.3-final.tar.gz
@@ -115,8 +114,6 @@ modules:
         path: krb5.conf
 
   - name: unixodbc
-    cleanup:
-      - /bin
     sources:
       - type: archive
         url: https://github.com/lurcher/unixODBC/releases/download/2.3.12/unixODBC-2.3.12.tar.gz
@@ -179,6 +176,7 @@ modules:
       - --sharedstatedir=/var/lib
       - --sbindir=/app/bin
       - --enable-fhs
+      - --disable-rpath
       - --disable-python
       - --without-json
       - --without-ad-dc
@@ -188,8 +186,6 @@ modules:
       - --without-acl-support
       - --without-systemd
       - --without-ldb-lmdb
-    cleanup:
-      - /bin
     sources:
       - type: archive
         url: https://samba.org/samba/ftp/stable/samba-4.22.3.tar.gz
