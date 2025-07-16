@@ -267,7 +267,7 @@ modules:
   - name: samba
     build-options:
       config-opts:
-        - --libexecdir=lib/libexec
+        - --libexecdir=${FLATPAK_DEST}/lib/libexec
     config-opts: &samba-config-opts
       - --localstatedir=/var
       - --sharedstatedir=/var/lib
@@ -297,9 +297,9 @@ modules:
       arch:
         x86_64: *compat_i386_opts
       config-opts:
-        - --bindir=bin32
-        - --sbindir=sbin32
-        - --libexecdir=lib32/libexec
+        - --bindir=${FLATPAK_DEST}/bin32
+        - --sbindir=${FLATPAK_DEST}/sbin32
+        - --libexecdir=${FLATPAK_DEST}/lib32/libexec
     config-opts: *samba-config-opts
     sources: *samba-sources
 
@@ -311,7 +311,7 @@ modules:
         x86_64:
           config-opts:
             - --enable-win64
-            - --with-mingw=ccache x86_64-w64-mingw32-gcc
+            - --with-mingw="ccache x86_64-w64-mingw32-gcc"
           libdir: /app/lib
       env:
         LIBDIR: lib
@@ -349,7 +349,7 @@ modules:
         x86_64: *compat_i386_opts
       config-opts:
         - --bindir=${FLATPAK_DEST}/bin32
-        - --with-mingw=ccache i686-w64-mingw32-gcc
+        - --with-mingw="ccache i686-w64-mingw32-gcc"
       env:
         LIBDIR: lib32
     config-opts: *wine-config-opts
