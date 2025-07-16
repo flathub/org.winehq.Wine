@@ -91,8 +91,6 @@ modules:
     config-opts:
       - --localstatedir=/var/lib
       - --disable-rpath
-    post-install:
-      - install -Dm644 krb5.conf -t /app/etc
     sources:
       - type: archive
         url: https://github.com/krb5/krb5/archive/refs/tags/krb5-1.21.3-final.tar.gz
@@ -102,12 +100,18 @@ modules:
           project-id: 13287
           stable-only: true
           url-template: https://github.com/krb5/krb5/archive/refs/tags/krb5-$version.tar.gz
-      - type: file
-        path: krb5.conf
       - type: shell
         dest: src
         commands:
           - autoreconf -si
+
+  - name: krb5-config
+    buildsystem: simple
+    build-commands:
+      - install -Dm644 krb5.conf -t /app/etc
+    sources:
+      - type: file
+        path: krb5.conf
 
   - name: unixodbc
     sources:
