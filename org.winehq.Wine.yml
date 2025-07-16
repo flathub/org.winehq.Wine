@@ -267,7 +267,7 @@ modules:
   - name: samba
     build-options:
       config-opts:
-        - --libexecdir=${FLATPAK_DEST}/lib/libexec
+        - --libexecdir=lib/libexec
     config-opts: &samba-config-opts
       - --localstatedir=/var
       - --sharedstatedir=/var/lib
@@ -297,9 +297,9 @@ modules:
       arch:
         x86_64: *compat_i386_opts
       config-opts:
-        - --bindir=${FLATPAK_DEST}/bin32
-        - --sbindir=${FLATPAK_DEST}/sbin32
-        - --libexecdir=${FLATPAK_DEST}/lib32/libexec
+        - --bindir=bin32
+        - --sbindir=sbin32
+        - --libexecdir=lib32/libexec
     config-opts: *samba-config-opts
     sources: *samba-sources
 
