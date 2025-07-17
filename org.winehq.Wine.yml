@@ -177,6 +177,10 @@ modules:
           project-id: 13287
           stable-only: true
           url-template: https://github.com/krb5/krb5/archive/refs/tags/krb5-$version.tar.gz
+      - type: shell
+        dest: src
+        commands:
+          - autoreconf -si
 
   - name: krb5-32bit
     subdir: src
@@ -272,6 +276,7 @@ modules:
       - --sharedstatedir=/var/lib
       - --enable-fhs
       - --disable-rpath
+      - --disable-rpath-install
       - --disable-python
       - --without-json
       - --without-ad-dc
