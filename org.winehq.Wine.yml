@@ -90,6 +90,7 @@ modules:
     subdir: src
     config-opts:
       - --localstatedir=/var/lib
+      - --sbindir=${FLATPAK_DEST}/bin
       - --disable-rpath
     sources:
       - type: archive
@@ -172,10 +173,13 @@ modules:
 
   - name: samba
     config-opts:
+      - --sbindir=/app/bin
+      - --libexecdir=/app/lib/libexec
       - --localstatedir=/var
       - --sharedstatedir=/var/lib
       - --enable-fhs
       - --disable-rpath
+      - --disable-rpath-install
       - --disable-python
       - --without-json
       - --without-ad-dc
