@@ -132,6 +132,7 @@ cleanup:
   - /bin/winemaker
   - /bin/wmc
   - /bin/wrc
+  - /bin32
   - /include
   - /lib/pkgconfig
   - /lib32/pkgconfig
@@ -361,8 +362,6 @@ modules:
     post-install:
       - mv ${FLATPAK_DEST}/bin32/wine{,-preloader} ${FLATPAK_DEST}/bin/
     sources: *wine-sources
-    cleanup:
-      - /bin32
 
   # Tools
 
