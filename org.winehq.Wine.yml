@@ -162,6 +162,9 @@ modules:
 
   - name: krb5
     subdir: src
+    build-options:
+      config-opts:
+        - --sbindir=${FLATPAK_DEST}/bin
     config-opts: &krb5-config-opts
       - --localstatedir=/var/lib
       - --disable-rpath
@@ -174,10 +177,6 @@ modules:
           project-id: 13287
           stable-only: true
           url-template: https://github.com/krb5/krb5/archive/refs/tags/krb5-$version.tar.gz
-      - type: shell
-        dest: src
-        commands:
-          - autoreconf -si
 
   - name: krb5-32bit
     subdir: src
@@ -186,7 +185,7 @@ modules:
         x86_64: *compat_i386_opts
       config-opts:
         - --bindir=${FLATPAK_DEST}/bin32
-        - --sbindir=${FLATPAK_DEST}/sbin32
+        - --sbindir=${FLATPAK_DEST}/bin32
     config-opts: *krb5-config-opts
     sources: *krb5-sources
 
@@ -215,7 +214,6 @@ modules:
         x86_64: *compat_i386_opts
       config-opts:
         - --bindir=${FLATPAK_DEST}/bin32
-        - --sbindir=${FLATPAK_DEST}/sbin32
     sources: *unixodbc-sources
 
   - name: opencl-headers
@@ -267,6 +265,7 @@ modules:
   - name: samba
     build-options:
       config-opts:
+        - --sbindir=bin
         - --libexecdir=lib/libexec
     config-opts: &samba-config-opts
       - --localstatedir=/var
@@ -298,7 +297,7 @@ modules:
         x86_64: *compat_i386_opts
       config-opts:
         - --bindir=bin32
-        - --sbindir=sbin32
+        - --sbindir=bin32
         - --libexecdir=lib32/libexec
     config-opts: *samba-config-opts
     sources: *samba-sources
