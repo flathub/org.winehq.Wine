@@ -131,8 +131,8 @@ modules:
       - cp -a CL $FLATPAK_DEST/include/
     sources:
       - type: archive
-        url: https://github.com/KhronosGroup/OpenCL-Headers/archive/refs/tags/v2025.06.13.tar.gz
-        sha256: 8bf2fda271c3511ee1cd9780b97446e9fa0cf2b0765cdd54aee60074a4567644
+        url: https://github.com/KhronosGroup/OpenCL-Headers/archive/refs/tags/v2025.07.22.tar.gz
+        sha256: 98f0a3ea26b4aec051e533cb1750db2998ab8e82eda97269ed6efe66ec94a240
         x-checker-data:
           type: anitya
           project-id: 223257
