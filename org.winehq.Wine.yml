@@ -56,16 +56,6 @@ cleanup:
   - /share/et
   - /share/examples
   - /share/man
-  - /bin/function_grep.pl
-  - /bin/widl
-  - /bin/winebuild
-  - /bin/winecpp
-  - /bin/winedump
-  - /bin/wineg++
-  - /bin/winegcc
-  - /bin/winemaker
-  - /bin/wmc
-  - /bin/wrc
   - /include
   - /lib/pkgconfig
   - /lib/wine/*.def
@@ -145,6 +135,7 @@ modules:
     buildsystem: simple
     build-commands:
       - perl Makefile.PL
+      - make
       - make install
     cleanup:
       - '*'
