@@ -161,8 +161,8 @@ modules:
       - --disable-rpath
     sources: &krb5-sources
       - type: archive
-        url: https://github.com/krb5/krb5/archive/refs/tags/krb5-1.21.3-final.tar.gz
-        sha256: 2157d92020d408ed63ebcd886a92d1346a1383b0f91123a0473b4f69b4a24861
+        url: https://github.com/krb5/krb5/archive/refs/tags/krb5-1.22-final.tar.gz
+        sha256: 686f7251da4b1ffcba1112b4b25c888890dac3227f9b84151bb41fce4ffc2d78
         x-checker-data:
           type: anitya
           project-id: 13287
