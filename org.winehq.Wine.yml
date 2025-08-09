@@ -171,7 +171,7 @@ modules:
       - type: shell
         dest: src
         commands:
-          - autoreconf -si
+          - autoreconf -vfi
 
   - name: krb5-32bit
     subdir: src
@@ -375,7 +375,7 @@ modules:
         subdir: CPP/7zip/Bundles/Alone2
         build-commands:
           - make -j $FLATPAK_BUILDER_N_JOBS -f makefile.gcc
-          - install -D ./_o/7zz -t /app/bin
+          - install -Dm755 ./_o/7zz -t /app/bin
           - ln -s /app/bin/7zz /app/bin/7za
           - ln -s /app/bin/7zz /app/bin/7z
         sources:
