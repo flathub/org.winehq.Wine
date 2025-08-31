@@ -1,7 +1,7 @@
 id: org.winehq.Wine
 sdk: org.freedesktop.Sdk
 runtime: org.freedesktop.Platform
-runtime-version: &runtime-version '24.08'
+runtime-version: '25.08'
 finish-args:
   - --share=ipc
   - --socket=x11
@@ -25,12 +25,6 @@ rename-desktop-file: wine.desktop
 rename-icon: wine
 
 add-extensions:
-  org.freedesktop.Platform.ffmpeg-full:
-    directory: lib/ffmpeg
-    add-ld-path: .
-    version: *runtime-version
-    autodelete: false
-
   org.winehq.Wine.gecko-wow64:
     directory: share/wine/gecko
     bundle: true
@@ -59,22 +53,9 @@ cleanup:
   - /include
   - /lib/pkgconfig
   - /lib/wine/*.def
-cleanup-commands:
-  - mkdir -p ${FLATPAK_DEST}/lib/ffmpeg
 modules:
 
   # Wine dependencies
-
-  - name: libusb
-    sources:
-      - type: archive
-        url: https://github.com/libusb/libusb/releases/download/v1.0.29/libusb-1.0.29.tar.bz2
-        sha256: 5977fc950f8d1395ccea9bd48c06b3f808fd3c2c961b44b0c2e6e29fc3a70a85
-        x-checker-data:
-          type: anitya
-          project-id: 1749
-          stable-only: true
-          url-template: https://github.com/libusb/libusb/releases/download/v$version/libusb-$version.tar.bz2
 
   - name: krb5
     subdir: src
