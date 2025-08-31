@@ -1,10 +1,10 @@
 id: org.winehq.Wine
-default-branch: stable-24.08
+default-branch: stable-25.08
 sdk: org.freedesktop.Sdk
 runtime: org.freedesktop.Platform
-runtime-version: &runtime-version '24.08'
+runtime-version: &runtime-version '25.08'
 x-gl-version: &gl-version '1.4'
-x-gl-versions: &gl-versions 24.08;1.4
+x-gl-versions: &gl-versions 25.08;1.4
 x-gl-merge-dirs: &gl-merge-dirs vulkan/icd.d;glvnd/egl_vendor.d;egl/egl_external_platform.d;OpenCL/vendors;lib/dri;lib/d3d;lib/gbm;vulkan/explicit_layer.d;vulkan/implicit_layer.d
 finish-args:
   - --share=ipc
@@ -72,14 +72,8 @@ add-extensions:
     download-if: have-intel-gpu
     autoprune-unless: have-intel-gpu
 
-  org.freedesktop.Platform.ffmpeg-full:
-    directory: lib/ffmpeg
-    add-ld-path: .
-    version: *runtime-version
-    autodelete: false
-
-  org.freedesktop.Platform.ffmpeg_full.i386:
-    directory: lib32/ffmpeg
+  org.freedesktop.Platform.codecs_extra.i386:
+    directory: lib32/codecs-extra
     add-ld-path: .
     version: *runtime-version
     autodelete: false
@@ -129,27 +123,10 @@ cleanup:
   - /lib/wine/*.def
   - /lib32/wine/*.def
 cleanup-commands:
-  - mkdir -p ${FLATPAK_DEST}/lib{,32}/ffmpeg
+  - mkdir -p ${FLATPAK_DEST}/lib32/codecs-extra
 modules:
 
   # Wine dependencies
-
-  - name: libusb
-    sources: &libusb-sources
-      - type: archive
-        url: https://github.com/libusb/libusb/releases/download/v1.0.29/libusb-1.0.29.tar.bz2
-        sha256: 5977fc950f8d1395ccea9bd48c06b3f808fd3c2c961b44b0c2e6e29fc3a70a85
-        x-checker-data:
-          type: anitya
-          project-id: 1749
-          stable-only: true
-          url-template: https://github.com/libusb/libusb/releases/download/v$version/libusb-$version.tar.bz2
-
-  - name: libusb-32bit
-    build-options:
-      arch:
-        x86_64: *compat_i386_opts
-    sources: *libusb-sources
 
   - name: krb5
     subdir: src
