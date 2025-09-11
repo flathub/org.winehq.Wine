@@ -73,10 +73,10 @@ add-extensions:
     autoprune-unless: have-intel-gpu
 
   org.freedesktop.Platform.codecs_extra.i386:
-    directory: lib32/codecs-extra
-    add-ld-path: .
-    version: *runtime-version
+    directory: lib/i386-linux-gnu/codecs-extra
+    version: '25.08-extra'
     autodelete: false
+    add-ld-path: lib
 
   org.winehq.Wine.gecko:
     directory: share/wine/gecko
@@ -123,7 +123,7 @@ cleanup:
   - /lib/wine/*.def
   - /lib32/wine/*.def
 cleanup-commands:
-  - mkdir -p ${FLATPAK_DEST}/lib32/codecs-extra
+  - mkdir -p ${FLATPAK_DEST}/lib/i386-linux-gnu/codecs-extra
 modules:
 
   # Wine dependencies
