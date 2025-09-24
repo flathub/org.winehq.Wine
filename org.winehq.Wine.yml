@@ -249,6 +249,7 @@ modules:
     build-options:
       config-opts:
         - --sbindir=bin
+        - --libdir=lib
         - --libexecdir=lib/libexec
     config-opts: &samba-config-opts
       - --localstatedir=/var
