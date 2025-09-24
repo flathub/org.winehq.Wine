@@ -260,8 +260,9 @@ modules:
   - name: samba
     build-options:
       config-opts:
-        - --sbindir=bin
-        - --libexecdir=lib/libexec
+        - --sbindir=/app/bin
+        - --libdir=/app/lib
+        - --libexecdir=/app/lib/libexec
     config-opts: &samba-config-opts
       - --localstatedir=/var
       - --sharedstatedir=/var/lib
@@ -292,9 +293,9 @@ modules:
       arch:
         x86_64: *compat_i386_opts
       config-opts:
-        - --bindir=bin32
-        - --sbindir=bin32
-        - --libexecdir=lib32/libexec
+        - --bindir=/app/bin32
+        - --sbindir=/app/bin32
+        - --libexecdir=/app/lib32/libexec
     config-opts: *samba-config-opts
     sources: *samba-sources
 
