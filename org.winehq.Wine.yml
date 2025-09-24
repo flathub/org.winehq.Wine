@@ -142,6 +142,7 @@ modules:
   - name: samba
     config-opts:
       - --sbindir=/app/bin
+      - --libdir=/app/lib
       - --libexecdir=/app/lib/libexec
       - --localstatedir=/var
       - --sharedstatedir=/var/lib
