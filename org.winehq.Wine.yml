@@ -73,7 +73,7 @@ add-extensions:
     autoprune-unless: have-intel-gpu
 
   org.freedesktop.Platform.VAAPI.nvidia.i386:
-    directory: lib/i386-linux-gnu/dri/nvidia-vaapi-driver
+    directory: i386/nvidia-vaapi-driver
     version: *runtime-version
     versions: *runtime-version
     autodelete: false
@@ -454,7 +454,7 @@ modules:
       - mkdir -p ${FLATPAK_DEST}/lib/i386-linux-gnu/GL
       - mkdir -p ${FLATPAK_DEST}/lib/debug/lib/i386-linux-gnu/GL
       - mkdir -p ${FLATPAK_DEST}/lib/i386-linux-gnu/dri/intel-vaapi-driver
-      - mkdir -p ${FLATPAK_DEST}/lib/i386-linux-gnu/dri/nvidia-vaapi-driver
+      - mkdir -p ${FLATPAK_DEST}/i386/nvidia-vaapi-driver
       - install -Dm644 ${FLATPAK_ID}.appdata.xml -t ${FLATPAK_DEST}/share/appdata
       - |
         icondir=${FLATPAK_DEST}/share/icons/hicolor
