@@ -67,30 +67,26 @@ modules:
       - install -Dm644 ../krb5.conf -t /app/etc
     sources:
       - type: archive
-        url: https://github.com/krb5/krb5/archive/refs/tags/krb5-1.22.1-final.tar.gz
-        sha256: d7dd1ded54c1c2d3381da4a266935feda6ba6398155720df27e2975bd5a39239
+        url: https://kerberos.org/dist/krb5/1.22/krb5-1.22.1.tar.gz
+        sha256: 1a8832b8cad923ebbf1394f67e2efcf41e3a49f460285a66e35adec8fa0053af
         x-checker-data:
           type: anitya
           project-id: 13287
           stable-only: true
-          url-template: https://github.com/krb5/krb5/archive/refs/tags/krb5-$version.tar.gz
+          url-template: https://kerberos.org/dist/krb5/${version0}.${version1}/krb5-${version0}.${version1}.${version2}.tar.gz
       - type: file
         path: krb5.conf
-      - type: shell
-        dest: src
-        commands:
-          - autoreconf -vfi
 
   - name: unixodbc
     sources:
       - type: archive
-        url: https://github.com/lurcher/unixODBC/releases/download/2.3.12/unixODBC-2.3.12.tar.gz
-        sha256: f210501445ce21bf607ba51ef8c125e10e22dffdffec377646462df5f01915ec
+        url: https://www.unixodbc.org/unixODBC-2.3.13.tar.gz
+        sha256: 119afef5f4cb04e780ca6cf763265b9fb2b99c4c11349a3f9cab14069d2c7c2b
         x-checker-data:
           type: anitya
           project-id: 7344
           stable-only: true
-          url-template: https://github.com/lurcher/unixODBC/releases/download/$version/unixODBC-$version.tar.gz
+          url-template: https://www.unixodbc.org/unixODBC-$version.tar.gz
 
   - name: opencl-headers
     buildsystem: simple
