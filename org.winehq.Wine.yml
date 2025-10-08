@@ -318,7 +318,7 @@ modules:
   - name: bundle-setup
     buildsystem: simple
     build-commands:
-      - install -Dm644 ${FLATPAK_ID}.appdata.xml -t ${FLATPAK_DEST}/share/appdata
+      - install -Dm644 ${FLATPAK_ID}.metainfo.xml -t ${FLATPAK_DEST}/share/metainfo
       - |
         icondir=${FLATPAK_DEST}/share/icons/hicolor
         install -Dm644 wine-logo.svg ${icondir}/scalable/apps/wine.svg
@@ -330,4 +330,4 @@ modules:
       - type: file
         path: wine-logo.svg
       - type: file
-        path: org.winehq.Wine.appdata.xml
+        path: org.winehq.Wine.metainfo.xml
