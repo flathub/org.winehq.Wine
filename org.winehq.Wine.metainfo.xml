@@ -5,14 +5,19 @@
   <metadata_license>FSFAP</metadata_license>
   <project_license>LGPL-2.1+</project_license>
   <name>Wine</name>
-  <summary>Windows compatibility layer</summary>
+  <summary>Run Windows applications on Linux</summary>
 
   <provides>
     <binary>wine</binary>
   </provides>
 
   <icon type="stock">org.winehq.Wine</icon>
-  
+
+  <branding>
+    <color type="primary" scheme_preference="light">#8c2d2d</color>
+    <color type="primary" scheme_preference="dark">#4a1717</color>
+  </branding>
+
   <developer id="winehq.org">
     <name>Wine Project</name>
   </developer>
