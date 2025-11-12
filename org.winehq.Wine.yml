@@ -264,8 +264,8 @@ modules:
       - --without-ldb-lmdb
     sources: &samba-sources
       - type: archive
-        url: https://samba.org/samba/ftp/stable/samba-4.23.2.tar.gz
-        sha256: 2de330647e1486683597e261285d04a9b7514ab5c7da27711736e22c7f2b9c2e
+        url: https://samba.org/samba/ftp/stable/samba-4.23.3.tar.gz
+        sha256: 06cdbb27a6956978b045455fe0696d998ffbac8d24ba24de87a4ef8200813320
         x-checker-data:
           type: anitya
           project-id: 4758
