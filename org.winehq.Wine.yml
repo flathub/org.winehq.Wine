@@ -16,7 +16,6 @@ finish-args:
   - --allow=multiarch
   - --allow=devel
   - --system-talk-name=org.freedesktop.UDisks2
-  - --system-talk-name=org.freedesktop.NetworkManager
   - --filesystem=xdg-desktop
   - --filesystem=xdg-documents
   - --filesystem=xdg-pictures
@@ -208,7 +207,7 @@ modules:
           stable-only: true
           url-template: https://github.com/KhronosGroup/OpenCL-Headers/archive/refs/tags/v$version.tar.gz
 
-  # Samba + dependencies
+  # Samba + dependencies - For ntlm_auth and other functionalities in Wine
 
   - name: parse-yapp
     buildsystem: simple
@@ -254,6 +253,8 @@ modules:
       - --disable-rpath
       - --disable-rpath-install
       - --disable-python
+      - --disable-cups
+      - --disable-iprint
       - --without-json
       - --without-ad-dc
       - --without-ads
