@@ -11,7 +11,7 @@ jobs:
       matrix:
         branch: [ branch/stable-25.08, branch/wow64-25.08, branch/stable-24.08, branch/wow64-24.08 ]
     steps:
-      - uses: actions/checkout@v5
+      - uses: actions/checkout@v6
         with:
           ref: ${{ matrix.branch }}
       - uses: docker://ghcr.io/flathub/flatpak-external-data-checker:latest
