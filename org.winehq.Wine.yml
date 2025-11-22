@@ -310,11 +310,6 @@ modules:
         LIBDIR: lib
     config-opts: &wine-config-opts
       - --disable-tests
-      - --with-x
-      - --with-wayland
-      - --with-pulse
-      - --with-dbus
-      - --without-oss
     make-install-args: &wine-make-install-args
       - LDCONFIG=/bin/true
       - UPDATE_DESKTOP_DATABASE=/bin/true
