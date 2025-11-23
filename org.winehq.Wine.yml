@@ -320,7 +320,7 @@ modules:
     build-options:
       arch:
         x86_64: *compat_i386_opts
-        libdir: /app/lib
+          libdir: /app/lib
       config-opts:
         - --libdir=/app/lib
         - --bindir=${FLATPAK_DEST}/bin32
