@@ -320,7 +320,13 @@ modules:
     build-options:
       arch:
         x86_64:
-          <<: *compat_i386_opts
+          prepend-pkg-config-path: /app/lib32/pkgconfig:/usr/lib/i386-linux-gnu/pkgconfig
+          ldflags: -L/app/lib32 -Wl,-rpath-link=/app/lib32 -Wl,-z,relro,-z,now -Wl,--as-needed
+          ldflags-override: true
+          append-path: /usr/lib/sdk/toolchain-i386/bin
+          env:
+            CC: ccache i686-unknown-linux-gnu-gcc
+            CXX: ccache i686-unknown-linux-gnu-g++
           libdir: /app/lib
       config-opts:
         - --bindir=${FLATPAK_DEST}/bin32
