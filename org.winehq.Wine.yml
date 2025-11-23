@@ -320,7 +320,9 @@ modules:
     build-options:
       arch:
         x86_64: *compat_i386_opts
+        libdir: /app/lib
       config-opts:
+        - --libdir=/app/lib
         - --bindir=${FLATPAK_DEST}/bin32
         - --with-mingw="ccache i686-w64-mingw32-gcc"
       env:
