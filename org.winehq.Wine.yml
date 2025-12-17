@@ -45,13 +45,11 @@ separate-locales: false
 cleanup:
   - '*.a'
   - '*.la'
-  - /share/doc
   - /share/et
   - /share/examples
   - /share/man
   - /include
   - /lib/pkgconfig
-  - /lib/wine/*.def
 modules:
 
   # Wine dependencies
@@ -172,11 +170,6 @@ modules:
       - --libdir=/app/lib
       - --enable-archs=i386,x86_64
       - --disable-tests
-      - --with-x
-      - --with-wayland
-      - --with-pulse
-      - --with-dbus
-      - --without-oss
     make-install-args:
       - LDCONFIG=/bin/true
       - UPDATE_DESKTOP_DATABASE=/bin/true
