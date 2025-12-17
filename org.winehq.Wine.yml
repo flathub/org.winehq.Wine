@@ -116,7 +116,6 @@ separate-locales: false
 cleanup:
   - '*.a'
   - '*.la'
-  - /share/doc
   - /share/et
   - /share/examples
   - /share/man
@@ -124,8 +123,6 @@ cleanup:
   - /include
   - /lib/pkgconfig
   - /lib32/pkgconfig
-  - /lib/wine/*.def
-  - /lib32/wine/*.def
 cleanup-commands:
   - mkdir -p ${FLATPAK_DEST}/lib{,32}/ffmpeg
 modules:
