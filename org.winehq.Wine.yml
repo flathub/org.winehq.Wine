@@ -51,13 +51,11 @@ separate-locales: false
 cleanup:
   - '*.a'
   - '*.la'
-  - /share/doc
   - /share/et
   - /share/examples
   - /share/man
   - /include
   - /lib/pkgconfig
-  - /lib/wine/*.def
 cleanup-commands:
   - mkdir -p ${FLATPAK_DEST}/lib/ffmpeg
 modules:
