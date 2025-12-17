@@ -121,7 +121,6 @@ separate-locales: false
 cleanup:
   - '*.a'
   - '*.la'
-  - /share/doc
   - /share/et
   - /share/examples
   - /share/man
@@ -129,8 +128,6 @@ cleanup:
   - /include
   - /lib/pkgconfig
   - /lib32/pkgconfig
-  - /lib/wine/*.def
-  - /lib32/wine/*.def
 cleanup-commands:
   - mkdir -p ${FLATPAK_DEST}/lib/i386-linux-gnu/codecs-extra
 modules:
@@ -298,11 +295,6 @@ modules:
         LIBDIR: lib
     config-opts: &wine-config-opts
       - --disable-tests
-      - --with-x
-      - --with-wayland
-      - --with-pulse
-      - --with-dbus
-      - --without-oss
     make-install-args: &wine-make-install-args
       - LDCONFIG=/bin/true
       - UPDATE_DESKTOP_DATABASE=/bin/true
