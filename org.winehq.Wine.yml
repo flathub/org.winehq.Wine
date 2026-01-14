@@ -176,8 +176,8 @@ modules:
       - INSTALL_PROGRAM_FLAGS=-s
     sources:
       - type: archive
-        url: https://dl.winehq.org/wine/source/10.0/wine-10.0.tar.xz
-        sha256: c5e0b3f5f7efafb30e9cd4d9c624b85c583171d33549d933cd3402f341ac3601
+        url: https://dl.winehq.org/wine/source/11.0/wine-11.0.tar.xz
+        sha256: c07a6857933c1fc60dff5448d79f39c92481c1e9db5aa628db9d0358446e0701
         x-addons-url: &wine-addons-url >-
           https://gitlab.winehq.org/wine/wine/-/raw/stable/dlls/appwiz.cpl/addons.c
         x-checker-data:
@@ -277,9 +277,9 @@ modules:
         ${FLATPAK_ID}.mono-wow64.metainfo.xml
     sources:
       - type: archive
-        url: https://dl.winehq.org/wine/wine-mono/9.4.0/wine-mono-9.4.0-x86.tar.xz
+        url: https://dl.winehq.org/wine/wine-mono/10.4.1/wine-mono-10.4.1-x86.tar.xz
         strip-components: 0
-        sha256: fd772219aacf46b825fa891a647af4a9ddf8439320101c231918b2037bf13858
+        sha256: a16606ef0724202e6a6848ece6e0cbba64d11e2f11aefe744af1d93c6d9f99bb
         x-checker-data:
           type: html
           url: *wine-addons-url
