@@ -36,12 +36,13 @@
     <p><code>flatpak run --command=winetricks org.winehq.Wine</code></p>
   </description>
 
-  <url type="homepage">https://www.winehq.org/</url>
-  <url type="bugtracker">https://bugs.winehq.org/</url>
-  <url type="faq">https://wiki.winehq.org/FAQ</url>
-  <url type="help">https://wiki.winehq.org/</url>
+  <url type="homepage">https://www.winehq.org</url>
+  <url type="bugtracker">https://bugs.winehq.org</url>
+  <url type="vcs-browser">https://gitlab.winehq.org/wine/wine</url>
+  <url type="faq">https://gitlab.winehq.org/wine/wine/-/wikis/FAQ</url>
+  <url type="help">https://gitlab.winehq.org/wine/wine/-/wikis/home</url>
   <url type="donation">https://www.winehq.org/donate</url>
-  <url type="translate">https://wiki.winehq.org/Translating</url>
+  <url type="translate">https://gitlab.winehq.org/wine/wine/-/wikis/Translating</url>
 
   <screenshots>
     <screenshot type="default">
