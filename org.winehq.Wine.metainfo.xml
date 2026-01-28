@@ -18,7 +18,7 @@
     <color type="primary" scheme_preference="dark">#4a1717</color>
   </branding>
 
-  <developer id="winehq.org">
+  <developer id="org.winehq">
     <name>Wine Project</name>
   </developer>
 
