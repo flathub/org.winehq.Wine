@@ -155,8 +155,8 @@ modules:
       - --without-ldb-lmdb
     sources:
       - type: archive
-        url: https://samba.org/samba/ftp/stable/samba-4.23.4.tar.gz
-        sha256: af429d078a86f1ce16d0d1ecee35c42a3610790b47b84468f31284a8c4060140
+        url: https://samba.org/samba/ftp/stable/samba-4.23.5.tar.gz
+        sha256: 593a43ddd0d57902237dfa76888f7b02cb7fc7747111369cb31e126db4836b9f
         x-checker-data:
           type: anitya
           project-id: 4758
@@ -196,8 +196,8 @@ modules:
     sources:
       - type: git
         url: https://github.com/Winetricks/winetricks.git
-        tag: '20250102'
-        commit: e20b2f6f80d175f96208f51800130db7459dd28c
+        tag: '20260125'
+        commit: b76e1ee79ac57d7aceb384f74518fc423265810c
         x-checker-data:
           type: git
           tag-pattern: ^(\d+)$
