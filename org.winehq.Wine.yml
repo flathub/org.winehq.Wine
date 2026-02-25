@@ -169,6 +169,7 @@ modules:
     config-opts:
       - --libdir=/app/lib
       - --enable-archs=i386,x86_64
+      - --disable-winemenubuilder
       - --disable-tests
     make-install-args:
       - LDCONFIG=/bin/true
