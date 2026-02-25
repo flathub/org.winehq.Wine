@@ -294,6 +294,7 @@ modules:
       env:
         LIBDIR: lib
     config-opts: &wine-config-opts
+      - --disable-winemenubuilder
       - --disable-tests
     make-install-args: &wine-make-install-args
       - LDCONFIG=/bin/true
