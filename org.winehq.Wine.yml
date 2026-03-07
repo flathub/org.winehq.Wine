@@ -166,6 +166,9 @@ modules:
   # Wine WOW64 build
 
   - name: wine
+    build-options:
+      ldflags: -L/app/lib -Wl,-z,relro -Wl,--as-needed
+      ldflags-override: true
     config-opts:
       - --libdir=/app/lib
       - --enable-archs=i386,x86_64
