@@ -1,7 +1,8 @@
 id: org.winehq.Wine
+default-branch: stable
 sdk: org.freedesktop.Sdk
 runtime: org.freedesktop.Platform
-runtime-version: '25.08'
+runtime-version: '26.08'
 finish-args:
   - --share=ipc
   - --socket=x11
@@ -24,11 +25,11 @@ rename-desktop-file: wine.desktop
 rename-icon: wine
 
 add-extensions:
-  org.winehq.Wine.gecko-wow64:
+  org.winehq.Wine.gecko-user:
     directory: share/wine/gecko
     bundle: true
 
-  org.winehq.Wine.mono-wow64:
+  org.winehq.Wine.mono-user:
     directory: share/wine/mono
     bundle: true
 
@@ -243,7 +244,7 @@ modules:
       - >-
         install -Dm644
         -t ${FLATPAK_DEST}/share/wine/gecko/share/metainfo/
-        ${FLATPAK_ID}.gecko-wow64.metainfo.xml
+        ${FLATPAK_ID}.gecko-user.metainfo.xml
     sources:
       - type: archive
         url: https://dl.winehq.org/wine/wine-gecko/2.47.4/wine-gecko-2.47.4-x86.tar.xz
@@ -264,7 +265,7 @@ modules:
           version-pattern: GECKO_VERSION\s+"(\d[\d\.]+\d)"
           url-template: https://dl.winehq.org/wine/wine-gecko/$version/wine-gecko-$version-x86_64.tar.xz
       - type: file
-        path: org.winehq.Wine.gecko-wow64.metainfo.xml
+        path: org.winehq.Wine.gecko-user.metainfo.xml
 
   - name: wine-mono
     buildsystem: simple
@@ -275,7 +276,7 @@ modules:
       - >-
         install -Dm644
         -t ${FLATPAK_DEST}/share/wine/mono/share/metainfo/
-        ${FLATPAK_ID}.mono-wow64.metainfo.xml
+        ${FLATPAK_ID}.mono-user.metainfo.xml
     sources:
       - type: archive
         url: https://dl.winehq.org/wine/wine-mono/10.4.1/wine-mono-10.4.1-x86.tar.xz
@@ -287,7 +288,7 @@ modules:
           version-pattern: MONO_VERSION\s+"(\d[\d\.]+\d)"
           url-template: https://dl.winehq.org/wine/wine-mono/$version/wine-mono-$version-x86.tar.xz
       - type: file
-        path: org.winehq.Wine.mono-wow64.metainfo.xml
+        path: org.winehq.Wine.mono-user.metainfo.xml
 
   # Flatpak bundle
 
