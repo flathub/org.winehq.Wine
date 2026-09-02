@@ -223,6 +223,8 @@ modules:
             x-checker-data:
               type: git
               tag-pattern: ^([\d.]+)$
+          - type: patch
+            path: 7zip-fix.patch
 
       - name: cabextract
         sources:
