@@ -74,6 +74,8 @@ modules:
           url-template: https://kerberos.org/dist/krb5/${version0}.${version1}/krb5-${version0}.${version1}.${version2}.tar.gz
       - type: file
         path: krb5.conf
+      - type: patch
+        path: krb5-fix.patch
 
   - name: unixodbc
     sources:
