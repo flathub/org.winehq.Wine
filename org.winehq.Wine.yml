@@ -1,5 +1,4 @@
 id: org.winehq.Wine
-default-branch: stable-25.08
 sdk: org.freedesktop.Sdk
 runtime: org.freedesktop.Platform
 runtime-version: &runtime-version '25.08'
