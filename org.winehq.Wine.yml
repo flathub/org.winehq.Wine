@@ -1,7 +1,7 @@
 id: org.winehq.Wine
 sdk: org.freedesktop.Sdk
 runtime: org.freedesktop.Platform
-runtime-version: '25.08'
+runtime-version: '26.08'
 finish-args:
   - --share=ipc
   - --socket=x11
@@ -24,11 +24,11 @@ rename-desktop-file: wine.desktop
 rename-icon: wine
 
 add-extensions:
-  org.winehq.Wine.gecko-wow64:
+  org.winehq.Wine.gecko:
     directory: share/wine/gecko
     bundle: true
 
-  org.winehq.Wine.mono-wow64:
+  org.winehq.Wine.mono:
     directory: share/wine/mono
     bundle: true
 
@@ -73,6 +73,8 @@ modules:
           url-template: https://kerberos.org/dist/krb5/${version0}.${version1}/krb5-${version0}.${version1}.${version2}.tar.gz
       - type: file
         path: krb5.conf
+      - type: patch
+        path: krb5-fix.patch
 
   - name: unixodbc
     sources:
@@ -220,6 +222,8 @@ modules:
             x-checker-data:
               type: git
               tag-pattern: ^([\d.]+)$
+          - type: patch
+            path: 7zip-fix.patch
 
       - name: cabextract
         sources:
@@ -243,7 +247,7 @@ modules:
       - >-
         install -Dm644
         -t ${FLATPAK_DEST}/share/wine/gecko/share/metainfo/
-        ${FLATPAK_ID}.gecko-wow64.metainfo.xml
+        ${FLATPAK_ID}.gecko.metainfo.xml
     sources:
       - type: archive
         url: https://dl.winehq.org/wine/wine-gecko/2.47.4/wine-gecko-2.47.4-x86.tar.xz
@@ -264,7 +268,7 @@ modules:
           version-pattern: GECKO_VERSION\s+"(\d[\d\.]+\d)"
           url-template: https://dl.winehq.org/wine/wine-gecko/$version/wine-gecko-$version-x86_64.tar.xz
       - type: file
-        path: org.winehq.Wine.gecko-wow64.metainfo.xml
+        path: org.winehq.Wine.gecko.metainfo.xml
 
   - name: wine-mono
     buildsystem: simple
@@ -275,7 +279,7 @@ modules:
       - >-
         install -Dm644
         -t ${FLATPAK_DEST}/share/wine/mono/share/metainfo/
-        ${FLATPAK_ID}.mono-wow64.metainfo.xml
+        ${FLATPAK_ID}.mono.metainfo.xml
     sources:
       - type: archive
         url: https://dl.winehq.org/wine/wine-mono/10.4.1/wine-mono-10.4.1-x86.tar.xz
@@ -287,7 +291,7 @@ modules:
           version-pattern: MONO_VERSION\s+"(\d[\d\.]+\d)"
           url-template: https://dl.winehq.org/wine/wine-mono/$version/wine-mono-$version-x86.tar.xz
       - type: file
-        path: org.winehq.Wine.mono-wow64.metainfo.xml
+        path: org.winehq.Wine.mono.metainfo.xml
 
   # Flatpak bundle
 
