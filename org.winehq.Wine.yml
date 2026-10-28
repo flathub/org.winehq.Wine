@@ -158,8 +158,8 @@ modules:
       - --without-ldb-lmdb
     sources:
       - type: archive
-        url: https://samba.org/samba/ftp/stable/samba-4.25.0.tar.gz
-        sha256: 2e2cb7296833b35b8f7a7fb76045e0c57adc0c2cd03264b37df5d58e40f28437
+        url: https://samba.org/samba/ftp/stable/samba-4.25.1.tar.gz
+        sha256: 7f367545bca69aa96897628f82f0f04d4b66b3bcb36cb978b9bb952c4b4c428d
         x-checker-data:
           type: anitya
           project-id: 4758
@@ -218,8 +218,8 @@ modules:
         sources:
           - type: git
             url: https://github.com/ip7z/7zip.git
-            tag: '26.04'
-            commit: 9128b80e3a471108678e2b3ec3c985861c8d7b0f
+            tag: '26.05'
+            commit: b88c6bc09339de32f7d18bbab900686b244f42ba
             x-checker-data:
               type: git
               tag-pattern: ^([\d.]+)$
