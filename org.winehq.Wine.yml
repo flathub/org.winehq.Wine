@@ -65,8 +65,8 @@ modules:
       - install -Dm644 ../krb5.conf -t /app/etc
     sources:
       - type: archive
-        url: https://kerberos.org/dist/krb5/1.22/krb5-1.22.2.tar.gz
-        sha256: 3243ffbc8ea4d4ac22ddc7dd2a1dc54c57874c40648b60ff97009763554eaf13
+        url: https://kerberos.org/dist/krb5/1.22/krb5-1.22.3.tar.gz
+        sha256: fe90af8441ad9fa9b064b8e53077cefb782a96f8a68276b031dc54af1789ff0b
         x-checker-data:
           type: anitya
           project-id: 13287
@@ -218,8 +218,8 @@ modules:
         sources:
           - type: git
             url: https://github.com/ip7z/7zip.git
-            tag: '26.05'
-            commit: b88c6bc09339de32f7d18bbab900686b244f42ba
+            tag: '26.06'
+            commit: d3296e39e1f1f92c7b41c0c3848e65640428d42d
             x-checker-data:
               type: git
               tag-pattern: ^([\d.]+)$
