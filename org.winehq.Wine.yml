@@ -373,13 +373,13 @@ modules:
       - name: cabextract
         sources:
           - type: archive
-            url: https://deb.debian.org/debian/pool/main/c/cabextract/cabextract_1.11.orig.tar.gz
-            sha256: b5546db1155e4c718ff3d4b278573604f30dd64c3c5bfd4657cd089b823a3ac6
+            url: https://www.cabextract.org.uk/cabextract-1.12.tar.gz
+            sha256: 8f39ad5f9c076b9c62c67dea4f8649e75dcc16899a2d8122ca32ba68262cb713
             x-checker-data:
               type: anitya
               project-id: 245
               stable-only: true
-              url-template: https://deb.debian.org/debian/pool/main/c/cabextract/cabextract_$version.orig.tar.gz
+              url-template: https://www.cabextract.org.uk/cabextract-$version.tar.gz
 
   # Bundled extensions
 
